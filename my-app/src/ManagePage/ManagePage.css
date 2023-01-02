@@ -1,0 +1,35 @@
+
+nav{
+    width: 100vw;
+    height: 8vh;    
+    background-color: #ff9100;
+    /* position: fixed; */
+    /* padding-top: 3%; */
+    margin-top: 2%;
+}
+#adv{
+    height: 50vh;
+    width:20vw;
+    border: solid 2px black;
+    border-radius: 7%;
+    background-color: #a1a1a1;
+    box-shadow: 5px 10px black;
+
+}
+
+p{
+    text-align: center;
+    border: 1px solid black;
+    width: 7vw;
+    background-color: #ff9100;
+    margin: 2%;
+
+}
+#Grid{
+    margin-top: 1.5vh;
+   margin-left: 0.7vw;
+}
+h2{
+    text-align: right;
+    margin-right: 1.5vw;
+}

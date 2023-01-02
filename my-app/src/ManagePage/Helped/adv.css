@@ -1,0 +1,38 @@
+.f_d{
+    padding-right: 6%;
+    width:85%;
+     background-color:green;  
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding-top: 8%;
+}
+.from{
+    width:5%;
+}
+/* .container{
+    width:25%;
+    background-color:red;
+} */
+.d_t{
+    padding-right: 6%;
+   width:85%;
+   /* background-color:green;  */
+   display: flex;
+   flex-direction: row;
+   justify-content:space-between;
+   padding-top: 6%;
+}
+.text{
+    width:45%
+}
+h2{
+    background-color:green;
+    padding-bottom:1%;
+    color: #a1a1a1;
+    padding-right: 6%;
+}
+.list{
+    background-color:aquamarine;
+    padding-top:2%;
+}

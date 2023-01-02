@@ -1,0 +1,70 @@
+.main{
+    direction:rtl;
+     width: 50%; 
+    display: flex;
+    flex-direction: column; 
+    /* background-color:aquamarine; */
+    flex-wrap: wrap;
+    padding-bottom: 0.5%;
+    float:right;
+} 
+h3{
+  color: #a1a1a1;
+  padding-right:1%;
+}
+.div-title-req{
+    color: #a1a1a1;
+    font-weight: bold;
+    padding-right:1%;
+}
+.date-time-div{
+  padding-top:1.5%;
+  padding-right:2.4%;
+  /* background-color: pink; */
+  width: 27vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+.divDest{
+  padding-top:1.5%;
+  padding-right:2.4%;
+  /* background-color:red; */
+}
+.form-group-r{
+  width:50%;
+  display: flex;
+  justify-content:space-between;
+  /* background-color:springgreen;  */
+  flex-wrap: wrap;
+  padding-right: 2.5%;
+
+}
+.form-group2-r{
+  width:32.3%;
+  display: flex;
+  justify-content:space-between;
+  /* background-color:red;  */
+  flex-wrap: wrap;
+  padding-right:2.5%;
+
+}
+.passReq{
+    padding-right:1%;
+    padding-top:1%;
+
+}
+.okDivWrap{
+    /* background-color:green; */
+    width:60%;
+    float: left;
+    padding-top: 3%;
+    padding-left: 10;
+}
+.okReq{
+    padding-top: 12%;
+    height: 7vh;
+    width: 10vw;
+    float: right;
+}
