@@ -18,15 +18,15 @@ const [signUp,setSignUp] =useState(false)
 const [showBtns,setShowBtns]=useState(true)
 const [users, setUsers] = useState([]);
     
-const fetchProducts = async () => {
-    const data = await GetAllUsers()
-    setUsers(data);
-    console.log(data);
-};
+// const fetchProducts = async () => {
+//     const data = await GetAllUsers()
+//     setUsers(data);
+//     c;onsole.log(data);
+// }
 
-useEffect(() => {
-    fetchProducts();
-}, []);
+// useEffect(() => {
+//     fetchProducts();
+// }, []);
 
 
 const hideSignIn =()=>{

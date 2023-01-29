@@ -9,10 +9,22 @@ import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import './Details.css'
-
+import {createUser} from '../Api/Users_Api'
 const Details =(props)=>{
 
 const [alarm,setAlarm] = useState(true);
+const [objUser,setObjUser] = useState([]);
+const onSubmit=async()=>{
+await createUser(objUser)
+}
+
+const onChange =(selected,key)=>{
+  debugger
+  setObjUser((prev) => ({
+    ...prev,
+    [key]: selected,
+  }));
+}
 
 return (
     <>
@@ -22,12 +34,12 @@ return (
         פרטים אישיים:
     </div>
     <div className='div-personal-detailes'>
-    <TextField id="outlined-basic" label="שם" variant="outlined"  />
-    <TextField id="outlined-basic" label="טלפון נייד" variant="outlined" />
+    <TextField id="outlined-basic" label="שם" variant="outlined"  onChange={(e)=>{onChange(e.target.value,"Fullname")}}/>
+    <TextField id="outlined-basic" label="טלפון נייד" variant="outlined" onChange={(e)=>{onChange(e.target.value,"Phone")}}/>
     </div>
     <div className='div-personal-detailes'>
-    <TextField id="outlined-basic" label="אי-מייל" variant="outlined"  />
-    <TextField id="outlined-basic" label="סיסמה" variant="outlined" />
+    <TextField id="outlined-basic" label="אי-מייל" variant="outlined"  onChange={(e)=>{onChange(e.target.value,"Email")}}/>
+    <TextField id="outlined-basic" label="סיסמה" variant="outlined" onChange={(e)=>{onChange(e.target.value,"Password")}}/>
     </div>
     <div className='div-title'>
         כתובת:
@@ -80,8 +92,10 @@ return (
     </div>
     <div className='okWrap'>
                     <span></span>
-                    <Button style={{backgroundColor: '#ff9100'}} className='ok' variant="contained" onClick={()=>{
-                        alert(props.userType)} }>אישור</Button>
+                    <Button style={{backgroundColor: '#ff9100'}} className='ok' variant="contained"
+                     onClick={()=>{
+                        alert(props.userType);
+                        onSubmit()}}>אישור</Button>
     </div> 
     </>
 )
