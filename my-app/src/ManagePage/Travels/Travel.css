@@ -1,0 +1,39 @@
+body{
+    background-color: white;
+    direction: rtl;
+}
+#cardcss{
+    background-color: lightgray;
+    box-shadow: 5px 5px 5px;
+    margin: 3%;
+    height: 50vh;
+    display: inline-block;
+    width: 20vw;
+    position: relative;
+    right: 8vw;
+
+
+
+}
+#headercss{
+background-color: gray;
+}
+h1{
+    font-size: xx-large;
+    color: grey;
+    margin-right: 14%;
+
+}
+#cardcss:hover,#headercss:hover{
+    background-color: #ff9100;}
+#ll{
+background-color: grey;
+color: #ff9100;
+right: 5vw;
+
+}
+#GridCss{
+    color: grey;
+    position: relative;
+  right: 3vw;
+}

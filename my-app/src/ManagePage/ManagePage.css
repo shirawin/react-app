@@ -33,3 +33,72 @@ h2{
     text-align: right;
     margin-right: 1.5vw;
 }
+
+ 
+  * {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  .css-mhc70k-MuiGrid-root {
+    width: 100%;
+    position: relative;
+    margin: 0px;
+    margin-left: 0px;
+    background-color: #ff9100;
+  }
+#form{
+    padding: 0px;
+    margin: 0px;
+   
+    margin-top: 16px;
+    width: 98%;
+    justify-content: space-between;
+  }
+  #city{
+    background-color: #ff9100;
+    border: #a1a1a1;
+    width: 8vw;
+  }
+  #cityLabel{
+    border: #ff0404;
+    width: 8vw;
+  }
+  .date{
+    margin-left: 1.5vw;
+    background-color: #ff9100;
+    height: 5vh;
+    width: 8vw;
+    border: 0px;
+    border-radius: 2%;
+  }
+ #last{
+  width: 8vw;
+  height: 5vh;
+    background-color: #ff9100;
+ }
+ #composition-menu{
+  width: 8vw;
+  color: black;
+  background-color: lightgray;
+ }
+ #bar{
+  background-color: #a1a1a1;
+ }
+ #input-cities{
+  border: #a1a1a1;
+  color: #a1a1a1;
+ }
+ 
+ .aa{
+background-color: #ff9100;
+width: 10vw;
+border-radius: 6%; 
+}
+.inputDate{
+  color:#a1a1a1;
+}
+
+#main{
+  background-color: lightgrey;
+}

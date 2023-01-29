@@ -12,15 +12,24 @@ import Button from '@mui/material/Button';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 
-import './request.css'
+import './Request.css'
 
 const Request=()=>{
  const [value, setValue] = React.useState(null);
+ const[numOfItems,setNumOfItems]= useState(0); 
+ const[disable,setDisable]= useState(false);
+
 //  const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
  const handleChange = (newValue) => {
     setValue(newValue);
   };
-
+  const handleSubmit = () => {
+    setNumOfItems(numOfItems+1);
+    if(numOfItems==3){
+      alert("זהווו");
+      setDisable(true);
+        }
+  };
     return(
         <div className="main">
             <h1>בקשה חדשה</h1>
@@ -46,17 +55,21 @@ const Request=()=>{
             <div >
                  <h3 className='title'>סמן את הנדרש עבורך:</h3>
                  <FormGroup row className='form-group-r'>
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אופנוע" />
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="רכב פרטי" />
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אמבולנס" />
+                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אופנוע" disabled={disable} onClick={handleSubmit}
+
+                
+                />
+                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="רכב פרטי"  disabled={disable} onClick={handleSubmit} />
+                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אמבולנס"  disabled={disable} onClick={handleSubmit}/>
                  </FormGroup>
                  <FormGroup row className='form-group2-r'>
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="מעלון" />
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" />
+                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="מעלון"  disabled={disable} onClick={handleSubmit} />
+                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" disabled={disable} onClick={handleSubmit}/>
                 </FormGroup>
                 <div className='passReq' >
                 <label>מספר נוסעים</label>&nbsp;&nbsp;
                 <NativeSelect
+                 disabled={disable} onClick={handleSubmit}
                  defaultValue={0}
                  inputProps={{
                  name: 'pass',
