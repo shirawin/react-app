@@ -1,0 +1,88 @@
+.div-wrp{
+    /* background-color:pink; */
+    margin-right:2%;
+    
+}
+.div-personal-detailes{
+    width: 34.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    /* background-color:darksalmon; */
+    flex-wrap: wrap;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+}
+.div-title{
+    padding-top: 0.5%;
+}
+.div-address{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    /* background-color:darksalmon; */
+    flex-wrap: wrap;
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+    padding-right: 0.7%;
+}
+.num{
+    width:14%;
+}
+.okWrap{
+    width:40%;
+    display: flex;
+    flex-direction: row;
+    flex-direction: row;
+    justify-content:space-between;
+    /* background-color:springgreen; */
+    flex-wrap: wrap;
+    padding-top:3%;
+}
+.form-group{
+    width:26%;
+    display: flex;
+    justify-content:space-between;
+    /* background-color:springgreen;  */
+    flex-wrap: wrap;
+    padding-right: 0.7%;
+ 
+}
+.form-group2{
+    width:16.8%;
+    display: flex;
+    justify-content:space-between;
+    /* background-color:red;  */
+    flex-wrap: wrap;
+    padding-right: 0.7%;
+ 
+}
+.okWrap{
+    padding-bottom:3%;;
+}
+.ok{
+    height: 7vh;
+    width: 10vw;
+    padding: 5%;;
+    float: right;
+}
+.div-places{
+    width: 20%;
+    display: flex;
+    padding-right: 0.7%;
+    padding-top: 0.7%;
+    padding-bottom: 0.5%;
+    /* background-color:red; */
+}
+.alarm-time{
+    /* background-color:red; */
+    padding-right: 0.7%;
+    padding-top: 0.9%;
+    width:17%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+
+}

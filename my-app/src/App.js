@@ -8,6 +8,7 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from 'stylis';
 import { CacheProvider } from '@emotion/react';
 import createCache from "@emotion/cache";
+import Travel from './ManagePage/Travels/Travel';
 
 // Create rtl cache
 const cacheRtl = createCache({
@@ -17,6 +18,7 @@ const cacheRtl = createCache({
 
 function App() {
   return (
+ 
     <CacheProvider value={cacheRtl}>
       <Router>
            <div >
