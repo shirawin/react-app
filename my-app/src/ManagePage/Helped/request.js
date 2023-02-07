@@ -16,11 +16,36 @@ import './request.css'
 
 const Request=()=>{
  const [value, setValue] = React.useState(null);
+ const[disable,setDisable]= useState(false);
+ const[openList,setOpenList]= useState(false);
+ const[objReq,setObjReq]= useState([]);
+ 
 //  const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
- const handleChange = (newValue) => {
-    setValue(newValue);
+const onSubmit=async()=>{
+var x = await createTravel(objReq)
+}
+ const handleChange = (selected,key) => {
+  setObjReq((prev) => ({
+    ...prev,
+    [key]: selected,
+  }));
   };
+  let cnt=0
+  const handleSubmit = (e) => {
+    debugger
+    if(e)
+    {
 
+      cnt+=1;
+    }else{
+      cnt-=1;
+
+    }
+    if(cnt===4){
+      alert("זהווו");
+      setDisable(true);
+        }
+  };
     return(
         <div className="main">
             <h1>בקשה חדשה</h1>
@@ -31,6 +56,7 @@ const Request=()=>{
             value={value}
             onChange={(newValue) => {
             setValue(newValue);
+          
             }}
              renderInput={(params) => <TextField {...params} />}
             />
@@ -41,23 +67,29 @@ const Request=()=>{
              />
             </div>
             <div className='divDest'>
-            <TextField id="outlined-basic" label="יעד" variant="outlined" />
+            <TextField id="outlined-basic" label="יעד" variant="outlined"  />
             </div>
             <div >
                  <h3 className='title'>סמן את הנדרש עבורך:</h3>
                  <FormGroup row className='form-group-r'>
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אופנוע" />
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="רכב פרטי" />
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אמבולנס" />
+                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אופנוע" disabled={disable} onClick={(e)=>{handleSubmit(e.target.checked);handleChange(e.target.checked,"Motorcycle")} }
+
+                
+                />
+                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="רכב פרטי"  disabled={disable} onClick={(e)=>{handleSubmit(e.target.checked);handleChange(e.target.checked,"Car")} }/>
+                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אמבולנס"  disabled={disable} onClick={(e)=>{handleSubmit(e.target.checked);handleChange(e.target.checked,"Ambulance")} }/>
                  </FormGroup>
                  <FormGroup row className='form-group2-r'>
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="מעלון" />
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" />
+                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="מעלון"  disabled={disable} onClick={(e)=>{handleSubmit(e.target.checked);handleChange(e.target.checked,"Elevator")} } />
+                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" disabled={disable} onClick={(e)=>{handleSubmit(e.target.checked);handleChange(e.target.checked,"BabyChair")} }/>
+                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כמות נוסעים "disabled={disable} onClick={(e)=>{handleSubmit(e.target.checked); setOpenList(openList==true?false:true)}}/>
                 </FormGroup>
+                {openList&&
                 <div className='passReq' >
                 <label>מספר נוסעים</label>&nbsp;&nbsp;
                 <NativeSelect
-                 defaultValue={0}
+                 disabled={disable}
+                 
                  inputProps={{
                  name: 'pass',
                  id: 'uncontrolled-native',
@@ -71,10 +103,11 @@ const Request=()=>{
                 <option value={5}>5</option>
                 </NativeSelect>
                 </div> 
+                }
                  <div className='okDivWrap'>
                   <br/>
                     <Button style={{backgroundColor: '#ff9100'}} className='okReq' variant="contained" onClick={()=>{
-                        alert('האם אתה בטוח?')} }>שלח בקשה</Button>
+                        onSubmit()} }>שלח בקשה</Button>
                  </div>
                 </div>
               

@@ -6,9 +6,17 @@
 
     
 }
+/* #mn{
+    background-color: #a1a1a1;
+    box-shadow: 5px 5px 5px;
+    
+} */
 .ok{
-    height: 7vh;
-    width: 20vw;
+    height: 3vh;
+    width: 5vw;
     padding: 5%;;
     float: right;
+}
+body{
+    background-color: rebeccapurple;
 }

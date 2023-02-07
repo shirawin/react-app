@@ -1,0 +1,50 @@
+body{
+    background-color: white;
+    direction: rtl;
+}
+#cardcss{
+    background-color: lightgray;
+    box-shadow: 5px 5px 5px;
+    margin: 3%;
+    height: 50vh;
+    display: inline-block;
+    width: 20vw;
+    position: relative;
+    right: 8vw;
+
+
+
+}
+#listOfItems{
+    height: 20vh;
+}
+.headercss{ 
+    font-size: 3vh;   
+height: 5vh;
+text-align: center;
+background-color: gray;
+}
+.secondLine{    
+width: 6vw;
+    background-color: gray;
+    }
+h1{
+    font-size: xx-large;
+    color: grey;
+    margin-right: 14%;
+
+}
+#cardcss:hover,#headercss:hover{
+    background-color: #ff9100;}
+#ll{
+background-color: grey;
+color: #ff9100;
+right: 4vw;
+
+}
+#GridCss{
+    top: 1vh;
+    line-height: 7vh;
+    color: grey;
+    position: relative;
+}
