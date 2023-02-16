@@ -27,8 +27,8 @@ export const GetSumOfTravels = async () => {
     return await (await axios.get(Get_SUM_TRAVELS)).data;
 }
 
-export const createTravel= async(data)=>{
-  return  axios.post(createTravel, data)
-        .then(response => console.log({ articleId: response.data.id }));
-
+export const CreateTravel= async(data)=>{
+    debugger
+  return await (await axios.post(createTravel, data)).data;
+      
 }

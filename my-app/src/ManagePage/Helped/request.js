@@ -10,6 +10,8 @@ import NativeSelect from '@mui/material/NativeSelect'
 import FormGroup from '@mui/material/FormGroup';
 import Button from '@mui/material/Button';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { CreateTravel } from '../../Api/Travels_Api';
+
 
 
 import './request.css'
@@ -22,7 +24,7 @@ const Request=()=>{
  
 //  const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
 const onSubmit=async()=>{
-var x = await createTravel(objReq)
+var x = await CreateTravel(objReq)
 }
  const handleChange = (selected,key) => {
   setObjReq((prev) => ({
