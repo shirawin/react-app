@@ -21,6 +21,8 @@ const [volunteers, setVolunteers] = useState([]);
 const [helpeds, setHelpeds] = useState([]);
 const [travels, setTravels] = useState([]);
 
+const x =300
+
 const fetchData = async () => {
     const resHelpeds = await GetSumOfHelpeds();
     setHelpeds(resHelpeds);
@@ -31,16 +33,13 @@ const fetchData = async () => {
     setVolunteers(300);
     //const resVolunteers = await GetSumOfVolunteers();
     const resTravels = await GetSumOfTravels();setTravels(resTravels);
-   
-   
+
     
 };
 
 useEffect(() => {
     fetchData()
 }, []);
-
-
 
 const hideSignIn =()=>{
     setSignIn(true);
@@ -75,33 +74,34 @@ return (
     </div> */}
     <div className="logo"></div>
     <div className="btnWrap" row>
+    <Button style={{backgroundColor: '#ff9100' , color:'white'}} className='btns' onClick={(hideSignIn)}>
+       כניסה
+    </Button>
     <Button style={{backgroundColor: '#ff9100', color:'white'}} className='btns' onClick={(hideSignUp)}>
         הרשמה
     </Button>
-    <Button style={{backgroundColor: '#ff9100' , color:'white'}} className='btns' onClick={(hideSignIn)}>
-        התחברות
-    </Button>
-   
     </div>
-    <div className='circle'id='c'>
-        <span id='span-c'>
-        <Number n={volunteers}/>
+    {/* <div className='bottombar'> */}
+    <div className='heart'>
         <a id='a-span-c'>מתנדבים</a>
+    </div>
+    <span id='span-c'>
+        <Number n={x}/> 
+        </span>
+    <div className='car'>
+        <a id='a-span-c2'>נסיעות</a>    
+    </div>
+    <span id='span-c2'>
+        <Number n={x}/>
+    </span>
+    <div className='weelchair'>
+        <a id='a-span-c3'>נעזרים </a>    
+    </div>
+    <span id='span-c3'>
+        <Number n={x}/>
         </span>
     </div>
-    <div className='circle'id='c2'>
-        <span id='span-c2'>
-        <Number n={helpeds}/>
-        <a id='a-span-c2'>נעזרים</a>
-        </span>
-    </div>
-    <div className='circle'id='c3'>
-        <span id='span-c2'>
-        <Number n={travels}/>
-        <a id='a-span-c2'>נסיעות</a>
-        </span>
-    </div>
-    </div>
+    // </div>
     }
     {signIn&&
     <SignIn/>
