@@ -73,12 +73,12 @@ return (
         <h1 className='title'>התחברות</h1>
         <h2 className="signup">פעם ראשונה באתר? <span className='link' onClick={navigateToSignup}>הרשמה</span></h2>
           <div className='name'>
-          <TextField id="outlined-basic" label="שם" variant="outlined"   onChange={(e) => setLogIn({ ...logIn, userName: e.target.value})}/>
+          <TextField id="outlined-basic" label="שם" variant="outlined"  onChange={(e) => setLogIn({ ...logIn, userName: e.target.value})}/>
           </div>
           <div className='pass'>
-          <TextField id="outlined-basic" label="סיסמה" variant="outlined"   type='password' onChange={(e) => setLogIn({ ...logIn, password: e.target.value})}/>
+          <TextField id="outlined-basic" label="סיסמה" variant="outlined" type='password' onChange={(e) => setLogIn({ ...logIn, password: e.target.value})}/>
           </div>
-        <div className='ok-div-Wrap'>
+        <div className="ok-div-Wrap">
              <span></span>
              <Button style={{backgroundColor: '#ff9100'}} className='ok' variant="contained" type='submit'>אישור</Button>
         </div>

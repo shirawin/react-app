@@ -1,20 +1,20 @@
 .ok-div-Wrap{
-    margin-top:2%;
-    padding-bottom:5%;
-    padding-right: 12%;   
+ /* background-color: aqua; */
+ width: 49.9%;
+ display: flex;
+ justify-content: center;
 }
 .ok{
-    height: 3vh;
-    width: 5vw;
-    padding: 5%;;
-    float: right;
+    width:80vw;
+    height: 7vh;
+    font-weight: bold;
 }
 .signup{
     margin-top: 0.5%;
     background-color:white;
 }
 .link{
-    color:orange;
+    color:#ff9100;
     font-style: italic;
     cursor: pointer;
 }
@@ -30,7 +30,8 @@
     /* background-color: aqua; */
     width: 70%;
     margin-right:30%;
+    margin-top: 7%;
 }
 .title{
-    margin-right: 10%;
+    margin-right: 11vw;
 }
