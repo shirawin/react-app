@@ -7,7 +7,7 @@ import './Travel.css'
 import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-
+import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -29,18 +29,23 @@ const cacheRtl = createCache({
 });
 
 const Travel =(Props)=>{
-  const numbers = [11,12,13,14];
   
   const [expanded, setExpanded] = React.useState(false);
+  const listKeys = Object.keys(Props.ls).filter(key => Props.ls[key]);
+  const userType=2;
+  const userTypee = useSelector((state) => state.users.id); 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  // const =()=>{
+
+  // }
 return (
     <>
         <Card  id="cardcss" >
       <CardContent>
         <Typography sx={{ fontSize: 14 }} className="headercss">
-       {<>{Props.dest}&nbsp;<span>לכיוון</span>&nbsp;{Props.from}</>}
+       {<>{Props.from}&nbsp;<span>לכיוון</span>&nbsp;{Props.dest}</>}
         </Typography>
         <div style={{height: 7}}></div>
         <Grid  container 
@@ -48,7 +53,7 @@ return (
   justifyContent="center"
   alignItems="center">
         <Typography sx={{ fontSize: 14,marginLeft:10 }} className="secondLine">
-       תאריך
+        {Props.Date}
         </Typography>
         <Typography sx={{ fontSize: 14 }} className="secondLine">
        שעה
@@ -60,17 +65,32 @@ return (
 
         <Typography sx={{ mb: 1 }} color="text.secondary" id="listOfItems" >
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-  {Props.ls.map((num) => <Grid item xs={5} id="GridCss"><b>•{num}</b>
-  
-</Grid>)}
+ 
+  {listKeys.map(key =>{ 
+    return(
+      <>
+      <Grid item xs={5} id="GridCss" key={key}><b>•{key }</b></Grid>
+      </>
+    )
+  //   debugger 
+  // if (Props.ls[key]){
+// } else {
+//   return null; 
+// }
+})}
+ 
+
 </Grid>
         </Typography>
         
       </CardContent>
       <CardActions>
-        
-      <Button variant="contained" id="ll"><b>אני רוצה לעשות טוב😁</b></Button>
-      </CardActions>
+      {userType===2&&
+      <Button variant="contained" id="ll" ><b>אני רוצה לעשות טוב😁</b></Button>}
+        {userType===1&&
+        <Button variant="contained" id="ll" ><b>סגור מודעה&nbsp;&nbsp;❌</b></Button>  }
+        </CardActions>
+    
     </Card>  
   </>
 )

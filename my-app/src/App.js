@@ -9,31 +9,23 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from 'stylis';
 import { CacheProvider } from '@emotion/react';
 import createCache from "@emotion/cache";
-import Travel from './ManagePage/Travels/Travel';
-
+import { Provider } from 'react-redux';
+import store from './redux/store';
 // Create rtl cache
 const cacheRtl = createCache({
   key: "muirtl",
   stylisPlugins: [prefixer, rtlPlugin],
 });
 
+
+
 function App() {
   return (
- 
+    <Provider store={store}>
     <CacheProvider value={cacheRtl}>
       <Router>
            <div >
-            <ul >
-              {/* <li>
-                <Link to="/">Home</Link>
-              </li> */}
-              {/* <li>
-                <Link to="/about">About Us</Link>
-              </li> */}
-              {/* <li>
-                <Link to="/contact">Contact Us</Link>
-              </li> */}
-            </ul>
+         
            <Routes>
                  <Route exact path='/' element={< Home />}></Route>
                  <Route exact path='/home' element={< Home />}></Route>
@@ -45,6 +37,7 @@ function App() {
        </Router>
    
        </CacheProvider>
+       </Provider>
   );
 }
 

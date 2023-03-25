@@ -7,12 +7,15 @@ import { useNavigate } from 'react-router-dom'
 import { style } from '@mui/system';
 import {CheckingUser} from '../Api/Users_Api'
 import Alert from '@mui/material/Alert';
-import Swal from 'sweetalert2'
+import store from '../redux/store';
+import { useDispatch } from 'react-redux';
+import { keepUser } from '../redux/Slices/UserSlice';
+// import Swal from 'sweetalert2'
 
 
 const SignIn =()=>{
   
-  
+  const dispatch = useDispatch();
   const [logIn, setLogIn] = useState({
     userName: '',
     password: ''
@@ -20,48 +23,35 @@ const SignIn =()=>{
 })
 const navigate = useNavigate();
 const handleSubmit = async (e) => {
-  /*"email": "shv1891@gmail.com",
-    "phone": "0527189124",
-    "address": "הרב אברמסקי 43",
-    "activestatus": true,
-    "usertype": true,
-    "password": "12345";
-    -------------
-    "email": "yael@gmail.com",
-    "phone": "0527690126",
-    "address": "צבי 25",
-    "activestatus": true,
-    "usertype": true,
-    "password": "22222",
-    *\ */
+ 
   
   e.preventDefault();
   debugger
-  const resHelpeds = await CheckingUser(logIn.userName,logIn.password);
-   if(resHelpeds==-1){
-  alert("שם משתמש וסיסמה נכונים+משתמש לא פעיל");
-   }
-  else{
-    if(resHelpeds==1){
-      alert("סיסמה שגויה ")
-    }
-    else{
-      if(resHelpeds==2){
-        alert("משתמש לא קיים")
-        navigate("/SignUp")
+//   const resHelpeds = await CheckingUser(logIn.userName,logIn.password);
+//    if(resHelpeds==-1){
+//   alert("שם משתמש וסיסמה נכונים+משתמש לא פעיל");
+//    }
+//   else{
+//     if(resHelpeds==1){
+//       alert("סיסמה שגויה ")
+//     }
+//     else{
+//       if(resHelpeds==2){
+//         alert("משתמש לא קיים")
+//         navigate("/SignUp")
 
-      }
-      // else{
-      //    navigate("/ManagePage")
-      // }
+//       }
+//       else{
+//         dispatch(keepUser(resHelpeds));
+//            navigate("/ManagePage")
+//        }
 
-    }
-  }
-        navigate("/ManagePage")
-
-
+//     }
+// }
       localStorage.setItem("uuid", 9);
-  }
+      navigate("/ManagePage")
+}
+ 
   const navigateToSignup=()=>{
     navigate("/SignUp")
   }
