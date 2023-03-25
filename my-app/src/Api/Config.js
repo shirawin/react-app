@@ -9,3 +9,5 @@ export const Get_SUM_TRAVELS= `${url}GetSumOfTravels`;
 export const Get_SUM_VOLUNTEERS= `${url}GetSumOfVolunteers`;
 export const Get_SUM_HELPEDS= `${url}GetSumOfHelpeds`;
 export const createTravel= `${url}createTravel`;
+export const filterTravel= `${url}filterTravel`;
+export const Get_Active_Travels= `${url}getActiveTravels`;

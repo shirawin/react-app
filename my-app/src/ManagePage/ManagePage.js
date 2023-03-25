@@ -1,42 +1,23 @@
 import React, { useState } from 'react'
 import './ManagePage.css'
-import RadioGroup, { useRadioGroup } from '@mui/material/RadioGroup';
 import Grid from '@mui/material/Grid';
 import { Navigate, useNavigate } from 'react-router-dom';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import { useEffect } from "react";
 import Travel from './Travels/Travel';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grow from '@mui/material/Grow';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
-import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import Menu from '@mui/material/Menu';
-import {
-  Button,
-  FormControl,
-  formLabelClasses,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import {FilterTravels, getActivTravels,GetTravelsByUser} from '../Api/Travels_Api'
+import { Button, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
-
+import { useSelector } from 'react-redux'; 
 const ManagePage = () => {
   const navigate = useNavigate();
   const [auth, setAuth] = useState(true);
@@ -49,27 +30,45 @@ const ManagePage = () => {
   const [disable, setDisable] = useState(true);
   const [searchObj, setSerchObj] = useState([]);
   const [city, setCity] = useState(null);
-
-  const cities = ["בני ברק", "ירשלים", "תל אביב", "פתח תקווה"]
+  const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
   const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
-  const data = [{ "dest": "dfghjkl", "from": "jjjני ברק", "ls": ["fffff", "fffff", "fffff"] }, { "dest": "jhgf", "from": "בני ברק", "ls": [1, 2, 3] }, { "dest": "ירושלים", "from": "בני ברק", "ls": [1, 2, 3] }, { "dest": "ירושלים", "from": "בני ברק", "ls": [1, 2, 3] }, { "dest": "בני ברק", "from": "פתח תקווה", "ls": [81, 28, 39] }, { "dest": "כינר", "from": "בני ברק", "ls": [14, 42, 43] }];
+  const [resData, setResData] = useState([]);
+ const userType=1;
+ const id = useSelector((state) => state.users.id); 
+ const userID = useSelector((state) => state.users.id); 
   //כשחל שינוי בתאריך הראשון
   const onChange =(selected,key)=>{
-    debugger
     setSerchObj((prev) => ({
       ...prev,
       [key]: selected,
     }));
   }
+const fetchData = async () => {
+  debugger
+ let data=[]
+  debugger
+  if(userType===1){
+    data= await getActivTravels();
+  }
+  else{
+    data = await GetTravelsByUser(userID);
+  }
+  setResData(data);
+};
+
+useEffect(() => {
+  fetchData()
+}, []);
   const handleChangeFirstDate = (newValue) => {
     setFirstDate(newValue);
     setDisable(false);
-    onChange(newValue,"date1")
+    onChange(newValue,"FirstDate")
   };
   //כשחל שינוי בתאריך השני
   const handleChangeSecondDate = (newValue) => {
     setSecondDate(newValue);
     setDisable(false);
+    onChange(newValue,"SecondDate")
   };
   //כשחל שינו בעיר
   const handleChangeCity = async (newValue) => {
@@ -79,41 +78,10 @@ const ManagePage = () => {
   };
   //בלחיצה על כפתור הפלטור
   const handleSubmit = async () => {
-    if (city != null) {
-      if (firstDate == null) {
-        if (secondDate == null) {
-          alert("עיר")
-        }
-        else {
-          alert("עיר-היום-תאריךשני")
-        }
-      }
-      else {
-        if (secondDate == null) {
-          alert("עיר-תאריךראשון-היום")
-        }
-        else {
-          alert("עיר-תאריךראשון-תאריךשני")
-
-        }
-      }
-    }
-    else {
-      if (firstDate == null) {
-        if (secondDate != null) {
-          alert("היום-תאריךשני")
-        }
-      }
-      else {
-        if (secondDate == null) {
-          alert("תאריךראשון-היום")
-        }
-        else {
-          alert("-תאריךראשון-תאריךשני")
-
-        }
-      }
-    }
+    var x = await FilterTravels(searchObj)
+    debugger
+    setResData(x)
+  
   };
   //בלחיצה על הכפתור למעבר לעדכון פרטים אישיים
   const submit = async (e) => {
@@ -123,17 +91,14 @@ const ManagePage = () => {
   const handleChange = (event) => {
     setAuth(event.target.checked);
   };
-
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = async (event) => {
     event.preventDefault();
     setAnchorEl(null);
     alert(event.target.value);
   };
-
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -161,29 +126,20 @@ const ManagePage = () => {
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={submit}
-                  color="inherit"
-                >
+                  color="inherit">
                   <AccountCircle />
                 </IconButton>
-
-
-
-
               </div>
             )}
           </Toolbar>
         </AppBar>
-      </Box>
-
+      </Box> 
       <FormControl id="form" className='header'> <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-
-
         <Grid item xs
           container
           direction="row"
           justifyContent="flex-end"
           alignItems="center">
-
           <Grid item style={{ width: '14vw'}}>
             <FormControl id="cityLabel">
               <InputLabel >עיר</InputLabel>
@@ -192,8 +148,7 @@ const ManagePage = () => {
                 id="city"
                 // value={age}
                 label="city"
-                onChange={(e)=>onChange(e.target.value,"city")}
-              >
+                onChange={(e)=>onChange(e.target.value,"city")}>
                 {cities.map((city) => {
                   return (
                     <MenuItem key={city} value={city}>
@@ -205,9 +160,7 @@ const ManagePage = () => {
             </FormControl>
           </Grid>
           <Grid item style={{ width: '14vw' }}>
-
             {/* <FormControl style={{ minWidth: 40 }}> */}
-
               <LocalizationProvider dateAdapter={AdapterDayjs} >
                 <Stack spacing={1}
                 >
@@ -218,15 +171,11 @@ const ManagePage = () => {
                     onChange={handleChangeFirstDate}
                     renderInput={(params) => <TextField {...params} classname="inputDate" />}
                   />
-
-
                 </Stack>
               </LocalizationProvider>
             {/* </FormControl> */}
           </Grid>
           <Grid item style={{ width: '14vw' }}>
-
-
             <LocalizationProvider dateAdapter={AdapterDayjs} >
               <Stack spacing={1} className="o">
                 <DesktopDatePicker id="o"
@@ -237,26 +186,18 @@ const ManagePage = () => {
                   onChange={handleChangeSecondDate}
                   renderInput={(params) => <TextField {...params} classname="inputDate" />}
                 />
-
-
               </Stack>
             </LocalizationProvider>
           </Grid>
           <Grid item xs>
-
             <Button variant="contained" id="last" disabled={disable} onClick={handleSubmit}><b>סנן</b></Button>
           </Grid>
         </Grid>
-
       </Box>
       </FormControl>
       <br />
-
-      {data.map((dd) => <Travel dest={dd.dest} from={dd.from} ls={dd.ls} />)}
-
-
+      {resData.map((dd) => <Travel dest={dd.dest} from={dd.city} ls={dd.list} Date={dd.date} idTravel={dd.travelId}/>)}
     </div>
   )
-
 }
 export default ManagePage

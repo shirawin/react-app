@@ -10,6 +10,8 @@ import Details from './Details'
 import Request from '../ManagePage/Helped/request'
 import Adv from '../ManagePage/Helped/adv'
 import  './PersonalArea.css'
+import { useSelector } from 'react-redux';
+import ManagePage from '../ManagePage/ManagePage';
 
 const PersonalArea =()=>{
     const handleChange = (event, newValue) => {
@@ -17,22 +19,35 @@ const PersonalArea =()=>{
       };
  
       const [value, setValue] = React.useState('1');
+      const userType=1;
+      const users = useSelector((state) => state.users.id); 
 return (
-  
+   
     <Box sx={{ width: '100%', typography: 'body1' }}   >
+    {userType===2&&
+    <TabContext value={value} >
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}id="heade">
+        <TabList onChange={handleChange} aria-label="lab API tabs example" id="bra">
+          <Tab label="עדכון פרטים" value="1" />
+        </TabList>
+      </Box>
+       <TabPanel value="1" ><Details/></TabPanel>
+    </TabContext>
+     }
+     {userType===1&&
     <TabContext value={value} >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}id="heade">
         <TabList onChange={handleChange} aria-label="lab API tabs example" id="bra">
           <Tab label="צור מודעה" value="1"  />
           <Tab label="עדכון פרטים" value="2" />
-          <Tab label="המודעות שלי" value="3" style={{color:"red"}}/>
         </TabList>
       </Box>
     
       <TabPanel value="1"><Request/></TabPanel> 
        <TabPanel value="2" ><Details/></TabPanel>
-      <TabPanel value="3"><Adv/></TabPanel>
+     
     </TabContext>
+    }
   </Box>
  
 )
