@@ -1,14 +1,16 @@
 .div-wrp{
     /* background-color:pink; */
-    margin-right:2%;
+    /* margin-right:19%; */
+    width:80%;
+    padding-left: 2%; 
     
 }
-.div-personal-detailes{
-    width: 34.5%;
+.div-personal-detailes2{
+    width: 60%;
     display: flex;
     flex-direction: row;
     justify-content:space-around;
-    /* background-color:darksalmon; */
+    /* background-color:blue; */
     flex-wrap: wrap;
     padding-bottom: 0.5%;
     padding-top: 0.5%;
@@ -16,12 +18,12 @@
 .div-title{
     padding-top: 0.5%;
 }
-.div-address{
-    width: 40%;
+.div-address2{
+    width:70%;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
-    /* background-color:darksalmon; */
+    /* background-color:blueviolet; */
     flex-wrap: wrap;
     padding-bottom: 0.5%;
     padding-top: 0.5%;
@@ -30,18 +32,18 @@
 .num{
     width:14%;
 }
-.okWrap{
-    width:40%;
-    display: flex;
+.okWrap2{ 
+    display: flex; 
     flex-direction: row;
-    flex-direction: row;
-    justify-content:space-between;
+    justify-content:end;
     /* background-color:springgreen; */
     flex-wrap: wrap;
-    padding-top:3%;
+    padding-top:2%;
+    margin-right: 2.5%;
+    width:30%;
 }
-.form-group{
-    width:26%;
+.formGroup{
+    width:60%;
     display: flex;
     justify-content:space-between;
     /* background-color:springgreen;  */
@@ -49,17 +51,17 @@
     padding-right: 0.7%;
  
 }
-.form-group2{
-    width:16.8%;
+.formGroup2{
+    width:37%;
     display: flex;
     justify-content:space-between;
     /* background-color:red;  */
     flex-wrap: wrap;
-    padding-right: 0.7%;
- 
+    padding-right: 0.5%;
 }
-.okWrap{
-    padding-bottom:3%;;
+#vol{
+    margin-right:5%;
+    /* background-color:aqua; */
 }
 .ok{
     height: 7vh;
@@ -75,14 +77,16 @@
     padding-bottom: 0.5%;
     /* background-color:red; */
 }
-.alarm-time{
+.alarmTime{
     /* background-color:red; */
     padding-right: 0.7%;
     padding-top: 0.9%;
-    width:17%;
+    width:60%;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
     flex-wrap: wrap;
-
+}
+.mail{
+    margin-top:1.5%;
 }
