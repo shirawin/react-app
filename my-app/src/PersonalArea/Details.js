@@ -11,7 +11,7 @@ import Switch from '@mui/material/Switch';
 import './Details.css'
 
 const Details =(props)=>{
-
+const [type,setType]=useState(false);
 const [alarm,setAlarm] = useState(true);
 
 return (
@@ -21,64 +21,64 @@ return (
     <div className='div-title'>
         פרטים אישיים:
     </div>
-    <div className='div-personal-detailes'>
+    <div className='div-personal-detailes2'>
     <TextField id="outlined-basic" label="שם" variant="outlined"  />
     <TextField id="outlined-basic" label="טלפון נייד" variant="outlined" />
     </div>
-    <div className='div-personal-detailes'>
+    <div className='div-personal-detailes2'>
     <TextField id="outlined-basic" label="אי-מייל" variant="outlined"  />
     <TextField id="outlined-basic" label="סיסמה" variant="outlined" />
     </div>
     <div className='div-title'>
         כתובת:
     </div>
-    <div className='div-address'>
+    <div className='div-address2'>
     <TextField id="outlined-basic" label="עיר" variant="outlined" />
     <TextField id="outlined-basic" label="רחוב" variant="outlined" />
     <TextField id="outlined-basic" label="בית" variant="outlined"  type="number" className='num'/>
     </div>
-    
-    {props.userType&&
+    {!type&&
+    <h2 className="signup" id="vol">מתנדב? <span className='link' onClick={()=>setType(true)}>הוסף פרטים כאן</span></h2>
+    }
+    {type&&
     <div className='more-detailes'>
      <div className='div-title'>
        פרטי רכב:
      </div>
-     <FormGroup row className='form-group'>
+     <FormGroup row className='formGroup'>
       <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אופנוע" />
       <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="רכב פרטי" />
       <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אמבולנס" />
     </FormGroup>
-    <FormGroup row className='form-group2'>
+    <FormGroup row className='formGroup2'>
       <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="מעלון" />
       <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" />
     </FormGroup>
     <duv className='div-places'>
     <TextField id="outlined-basic" label="מספר מקומות " variant="outlined"  type="number"/>
     </duv>
-    <div className='div-title'>
-       התראות לדוא"ל:
+    <div >
+       <div className='alarmTime'>
+       <span className='mail'>התראות לדוא"ל:</span> 
        <Switch  defaultChecked  color="warning" />
-     </div>
-     <div className='alarm-time'>
       <TextField
          style={{color: '#ff9100'}}
          label="משעה"
          type="time"
          defaultValue="08:00"
-
        />
       <TextField
          style={{color: '#ff9100'}} 
          label="עד שעה"
          type='time'
-        
          defaultValue="20:00"
       />
       </div>
      </div>
+     </div>
     }
     </div>
-    <div className='okWrap'>
+    <div className='okWrap2'>
                     <span></span>
                     <Button style={{backgroundColor: '#ff9100'}} className='ok' variant="contained" onClick={()=>{
                         alert(props.userType)} }>אישור</Button>
