@@ -1,10 +1,17 @@
 #heade{
     background-color: #a1a1a1;
-      color: #ff9100;
+    color: #ff9100;
 }
 #mui-p-39582-T-1{
-        color: red;
+    color: red;
 }
 #main{
- background-color: lightgray;
+    background-color: lightgray;
+}
+.tabDetailes{
+    direction:rtl;
+    margin-right: 29%;
+    /* margin-top: 1%; */
+    /* background-color: aqua; */
+    width:70%
 }

@@ -44,7 +44,12 @@ return (
       </Box>
     
       <TabPanel value="1"><Request/></TabPanel> 
-       <TabPanel value="2" ><Details/></TabPanel>
+      <TabPanel value="2">
+        <div className='tabDetailes'>
+          <h1>עדכון פרטים אישיים</h1>
+          <Details/>
+        </div>
+        </TabPanel>
      
     </TabContext>
     }

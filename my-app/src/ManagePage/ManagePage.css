@@ -14,9 +14,13 @@ nav{
     border-radius: 7%;
     background-color: #a1a1a1;
     box-shadow: 5px 10px black;
-
 }
-
+#last{
+  margin:2%;
+}
+.gridLast{
+  
+}
 p{
     text-align: center;
     border: 1px solid black;

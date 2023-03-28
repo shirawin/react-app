@@ -29,7 +29,7 @@ const ManagePage = () => {
   const anchorRef = React.useRef(null);
   const [disable, setDisable] = useState(true);
   const [searchObj, setSerchObj] = useState([]);
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState("");
   const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
   const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
   const [resData, setResData] = useState([]);
@@ -63,6 +63,7 @@ useEffect(() => {
     setFirstDate(newValue);
     setDisable(false);
     onChange(newValue,"FirstDate")
+    
   };
   //כשחל שינוי בתאריך השני
   const handleChangeSecondDate = (newValue) => {
@@ -76,6 +77,13 @@ useEffect(() => {
     setCity(newValue);
     setDisable(false);
   };
+  const handleReset=()=>{
+    setSerchObj([])
+    setCity("")
+    setFirstDate(null)
+    setSecondDate(null)
+    fetchData()
+  }
   //בלחיצה על כפתור הפלטור
   const handleSubmit = async () => {
     var x = await FilterTravels(searchObj)
@@ -146,9 +154,10 @@ useEffect(() => {
               <Select
                 labelId="cityLabel"
                 id="city"
-                // value={age}
+                value={city}
+
                 label="city"
-                onChange={(e)=>onChange(e.target.value,"city")}>
+                onChange={(e)=>{onChange(e.target.value,"city");setDisable(false);setCity(e.target.value)}}>
                 {cities.map((city) => {
                   return (
                     <MenuItem key={city} value={city}>
@@ -189,8 +198,9 @@ useEffect(() => {
               </Stack>
             </LocalizationProvider>
           </Grid>
-          <Grid item xs>
+          <Grid item xs className="gridLast">
             <Button variant="contained" id="last" disabled={disable} onClick={handleSubmit}><b>סנן</b></Button>
+            <Button variant="contained" id="last" disabled={disable} onClick={handleReset}><b>נקה נתונים</b></Button>
           </Grid>
         </Grid>
       </Box>
