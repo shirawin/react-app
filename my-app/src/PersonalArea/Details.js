@@ -14,6 +14,7 @@ const Details =(props)=>{
 const [type,setType]=useState(false);
 const [alarm,setAlarm] = useState(true);
 
+
 return (
     <>
  
