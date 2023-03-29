@@ -38,10 +38,10 @@ return (
     <TextField id="outlined-basic" label="רחוב" variant="outlined" />
     <TextField id="outlined-basic" label="בית" variant="outlined"  type="number" className='num'/>
     </div>
-    {!type&&
+    {!props.userType===2||!props.userType===1&&
     <h2 className="signup" id="vol">מתנדב? <span className='link' onClick={()=>setType(true)}>הוסף פרטים כאן</span></h2>
     }
-    {type&&
+    {props.userType===2&&
     <div className='more-detailes'>
      <div className='div-title'>
        פרטי רכב:

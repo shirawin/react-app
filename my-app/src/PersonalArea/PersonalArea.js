@@ -47,7 +47,7 @@ return (
       <TabPanel value="2">
         <div className='tabDetailes'>
           <h1>עדכון פרטים אישיים</h1>
-          <Details/>
+          <Details userType={2}/>
         </div>
         </TabPanel>
      
