@@ -33,9 +33,13 @@ const ManagePage = () => {
   const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
   const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
   const [resData, setResData] = useState([]);
- const userType=1;
- const id = useSelector((state) => state.users.id); 
- const userID = useSelector((state) => state.users.id); 
+  ///
+  // const {user} = useSelector(state => state);
+  // console.log(user);
+  // const userType = user.length > 0 ? user[0].UserType : null;
+  // const userId = user.length > 0 ? user[0].UserType : null;
+
+  const userType=1;
   //כשחל שינוי בתאריך הראשון
   const onChange =(selected,key)=>{
     setSerchObj((prev) => ({
@@ -44,15 +48,14 @@ const ManagePage = () => {
     }));
   }
 const fetchData = async () => {
-  debugger
+  console.log(1)
  let data=[]
-  debugger
-  if(userType===1){
+  if(userType){
     data= await getActivTravels();
   }
-  else{
-    data = await GetTravelsByUser(userID);
-  }
+  // else{
+  //   data = await GetTravelsByUser(userId);
+  // }
   setResData(data);
 };
 
@@ -83,6 +86,7 @@ useEffect(() => {
     setFirstDate(null)
     setSecondDate(null)
     fetchData()
+    setDisable(true)
   }
   //בלחיצה על כפתור הפלטור
   const handleSubmit = async () => {
@@ -155,7 +159,6 @@ useEffect(() => {
                 labelId="cityLabel"
                 id="city"
                 value={city}
-
                 label="city"
                 onChange={(e)=>{onChange(e.target.value,"city");setDisable(false);setCity(e.target.value)}}>
                 {cities.map((city) => {

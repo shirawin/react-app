@@ -13,7 +13,17 @@ import './Details.css'
 const Details =(props)=>{
 const [type,setType]=useState(false);
 const [alarm,setAlarm] = useState(true);
+const [objUser,setObjUser] = useState({
+  // להשתמש ב ID  
+  //של הREDUX
+ // id:id
+});
 
+const onSubmit=async()=>{
+const obj ={
+  name:objUser.name!==undefined?objUser.name: props.userDetails.name
+}
+}
 
 return (
     <>
@@ -23,7 +33,8 @@ return (
         פרטים אישיים:
     </div>
     <div className='div-personal-detailes2'>
-    <TextField id="outlined-basic" label="שם" variant="outlined"  />
+    <TextField id="outlined-basic" label="שם" variant="outlined" /> 
+    {/* value={objUser.name!==undefined?objUser.name: props.userDetails.name} */}
     <TextField id="outlined-basic" label="טלפון נייד" variant="outlined" />
     </div>
     <div className='div-personal-detailes2'>
@@ -38,10 +49,10 @@ return (
     <TextField id="outlined-basic" label="רחוב" variant="outlined" />
     <TextField id="outlined-basic" label="בית" variant="outlined"  type="number" className='num'/>
     </div>
-    {!props.userType===2||!props.userType===1&&
+    {!type&&
     <h2 className="signup" id="vol">מתנדב? <span className='link' onClick={()=>setType(true)}>הוסף פרטים כאן</span></h2>
     }
-    {props.userType===2&&
+    {type&&
     <div className='more-detailes'>
      <div className='div-title'>
        פרטי רכב:
