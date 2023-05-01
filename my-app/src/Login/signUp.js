@@ -24,7 +24,7 @@ return (
     </RadioGroup> */}
     </div>
     <div className="details">
-     <Details userType={volunteer}/>
+     <Details userType={1}/>
      
     </div>
     </div>

@@ -5,11 +5,12 @@ import './logIn.css'
 import { Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { style } from '@mui/system';
-import {CheckingUser} from '../Api/Users_Api'
+import {CheckingUser,getUser} from '../Api/Users_Api'
 import Alert from '@mui/material/Alert';
 import store from '../redux/store';
 import { useDispatch } from 'react-redux';
-import { keepUser } from '../redux/Slices/UserSlice';
+//import { rootReducer } from '../redux/Slices/UserSlice';
+import { keepUser} from '../redux/Slices/UserSlice';
 // import Swal from 'sweetalert2'
 
 
@@ -26,30 +27,33 @@ const handleSubmit = async (e) => {
  
   
   e.preventDefault();
-  debugger
-//   const resHelpeds = await CheckingUser(logIn.userName,logIn.password);
-//    if(resHelpeds==-1){
-//   alert("שם משתמש וסיסמה נכונים+משתמש לא פעיל");
-//    }
-//   else{
-//     if(resHelpeds==1){
-//       alert("סיסמה שגויה ")
-//     }
-//     else{
-//       if(resHelpeds==2){
-//         alert("משתמש לא קיים")
-//         navigate("/SignUp")
+  const resHelpeds = await CheckingUser(logIn.userName,logIn.password);
+   if(resHelpeds==-1){
+  alert("שם משתמש וסיסמה נכונים+משתמש לא פעיל");
+   }
+  else{
+    if(resHelpeds==1){
+      alert("סיסמה שגויה ")
+    }
+    else{
+      if(resHelpeds==2){
+        alert("משתמש לא קיים")
+        navigate("/SignUp")
 
-//       }
-//       else{
-//         dispatch(keepUser(resHelpeds));
-//            navigate("/ManagePage")
-//        }
+      }
+      else{
 
-//     }
-// }
-      localStorage.setItem("uuid", 9);
-      navigate("/ManagePage")
+        // const userData = await getUser(resHelpeds);
+        // console.log(userData);
+        // dispatch(keepUser(userData));
+        navigate("/ManagePage");
+
+       }
+
+    }
+}
+      // localStorage.setItem("uuid", 9);
+      // navigate("/ManagePage")
 }
  
   const navigateToSignup=()=>{
