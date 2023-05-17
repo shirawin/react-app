@@ -1,7 +1,7 @@
 
 import axios from "axios";
 
-import { Get_ALL_Users, Get_SUM_HELPEDS } from '../Api/Config'
+import { Get_ALL_Users, Get_SUM_HELPEDS,CreateUser } from '../Api/Config'
 
 
 
@@ -25,4 +25,9 @@ export const GetUserById = async (id) => {
 export const getUser = async (code) => {
     return await (await axios.get(`https://localhost:44330/api/Users/${code}`)).data;
 
+}
+export const createUser= async(data)=>{
+    debugger
+  return await (await axios.post(CreateUser, data)).data;
+      
 }

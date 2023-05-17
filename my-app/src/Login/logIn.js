@@ -28,6 +28,7 @@ const handleSubmit = async (e) => {
   
   e.preventDefault();
   const resHelpeds = await CheckingUser(logIn.userName,logIn.password);
+  
    if(resHelpeds==-1){
   alert("שם משתמש וסיסמה נכונים+משתמש לא פעיל");
    }
@@ -67,7 +68,7 @@ return (
         <h1 className='title'>התחברות</h1>
         <h2 className="signup">פעם ראשונה באתר? <span className='link' onClick={navigateToSignup}>הרשמה</span></h2>
           <div className='name'>
-          <TextField id="outlined-basic" label="שם" variant="outlined"  onChange={(e) => setLogIn({ ...logIn, userName: e.target.value})}/>
+          <TextField id="outlined-basic" label="אימייל" variant="outlined"  onChange={(e) => setLogIn({ ...logIn, userName: e.target.value})}/>
           </div>
           <div className='pass'>
           <TextField id="outlined-basic" label="סיסמה" variant="outlined" type='password' onChange={(e) => setLogIn({ ...logIn, password: e.target.value})}/>

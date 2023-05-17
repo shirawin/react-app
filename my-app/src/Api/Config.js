@@ -11,3 +11,4 @@ export const Get_SUM_HELPEDS= `${url}GetSumOfHelpeds`;
 export const createTravel= `${url}createTravel`;
 export const filterTravel= `${url}filterTravel`;
 export const Get_Active_Travels= `${url}getActiveTravels`;
+export const CreateUser= `${url}createUser`;
