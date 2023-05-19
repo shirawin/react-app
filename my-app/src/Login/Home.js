@@ -65,13 +65,6 @@ return (
     <>
    {showBtns&&
    <div>
-     {/* <div>
-      {users.map((user)=>{
-         return <p>{user.fullname}</p>;
-      }
-      
-    )}
-    </div> */}
     <div className="logo"></div>
     <div className="btnWrap" >
     <Button style={{backgroundColor: '#ff9100' , color:'white'}} className='btns' onClick={(hideSignIn)}>
@@ -81,7 +74,6 @@ return (
         הרשמה
     </Button>
     </div>
-    {/* <div className='bottombar'> */}
     <div className='heart'>
         <a id='a-span-c'>מתנדבים</a>
     </div>
@@ -101,7 +93,6 @@ return (
         <Number n={x}/>
         </span>
     </div>
-    // </div>
     }
     {signIn&&
     <SignIn/>
