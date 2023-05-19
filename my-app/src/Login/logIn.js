@@ -6,11 +6,11 @@ import { Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { style } from '@mui/system';
 import {CheckingUser,getUser} from '../Api/Users_Api'
-import Alert from '@mui/material/Alert';
+//import Alert from '@mui/material/Alert';
 import store from '../redux/store';
 import { useDispatch } from 'react-redux';
-//import { rootReducer } from '../redux/Slices/UserSlice';
-import { keepUser} from '../redux/Slices/UserSlice';
+import { setUser } from '../redux/Slices/UserSlice';
+import { Alert, Space } from 'antd';
 // import Swal from 'sweetalert2'
 
 
@@ -43,10 +43,10 @@ const handleSubmit = async (e) => {
 
       }
       else{
-
-        // const userData = await getUser(resHelpeds);
-        // console.log(userData);
-        // dispatch(keepUser(userData));
+     
+        const userData = await getUser(resHelpeds);
+        debugger
+        dispatch(setUser(userData));
         navigate("/ManagePage");
 
        }

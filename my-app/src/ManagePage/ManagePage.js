@@ -33,13 +33,10 @@ const ManagePage = () => {
   const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
   const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
   const [resData, setResData] = useState([]);
-  ///
-  // const {user} = useSelector(state => state);
-  // console.log(user);
-  // const userType = user.length > 0 ? user[0].UserType : null;
-  // const userId = user.length > 0 ? user[0].UserType : null;
-
-  const userType=1;
+  const userType =1;
+  
+  const user = useSelector((state) => state.user);
+ //מתנדב-true
   //כשחל שינוי בתאריך הראשון
   const onChange =(selected,key)=>{
     setSerchObj((prev) => ({
@@ -48,15 +45,17 @@ const ManagePage = () => {
     }));
   }
 const fetchData = async () => {
-  console.log(1)
+  console.log(user);
  let data=[]
-  if(userType){
+  if(user.usertype){
+    debugger
     data= await getActivTravels();
   }
-  // else{
-  //   data = await GetTravelsByUser(userId);
-  // }
+  else{
+    data= await GetTravelsByUser(user.Code);
+  }
   setResData(data);
+ 
 };
 
 useEffect(() => {
@@ -93,7 +92,6 @@ useEffect(() => {
     var x = await FilterTravels(searchObj)
     debugger
     setResData(x)
-  
   };
   //בלחיצה על הכפתור למעבר לעדכון פרטים אישיים
   const submit = async (e) => {

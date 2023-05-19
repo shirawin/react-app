@@ -12,3 +12,4 @@ export const createTravel= `${url}createTravel`;
 export const filterTravel= `${url}filterTravel`;
 export const Get_Active_Travels= `${url}getActiveTravels`;
 export const CreateUser= `${url}createUser`;
+export const TAKE_TRAVEL= `${url}takeTravel`;
