@@ -10,7 +10,6 @@ const userSlice = createSlice({
     //   state.user.push(action.payload);
     // },
     keepUser(state, actions) {
-      debugger
       return {
           ...state, 
           user: actions.payload,

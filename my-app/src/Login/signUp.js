@@ -11,10 +11,14 @@ import Checkbox from '@mui/material/Checkbox';
 import './signUp.css'
 import { Grid } from '@mui/material';
 import Details from '../PersonalArea/Details'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp =()=>{
+    const navigate = useNavigate();
     const [volunteer, setVolunteer]=useState(false);
 return (
+  <div>
+    <div id="backTohome" onClick={()=>navigate("/")}></div>
     <div className="container">
     <h1>הרשמה למערכת</h1>
     <div className='div-user-type'>
@@ -26,6 +30,7 @@ return (
     <div className="details">
      <Details userType={1}/>
      
+    </div>
     </div>
     </div>
  )

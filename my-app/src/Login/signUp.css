@@ -1,5 +1,5 @@
 body::-webkit-scrollbar {
-    overflow: auto;
+    overflow:auto;
 }
 .container{
     direction:rtl;
