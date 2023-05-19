@@ -18,30 +18,38 @@ import './request.css'
 
 const Request=()=>{
   const id = useSelector((state) => state.users.id); 
-//  const[disable,setDisable]= useState(false);
  const[openList,setOpenList]= useState(false);
- const[objReq,setObjReq]= useState({
-   "userId":id
- });
+ const[objReq,setObjReq]= useState({});
  const[cnt,setCnt]= useState(0);
  const [checked, setChecked] = useState([]);
- const [selectedCount, setSelectedCount] = useState(0);
-
+ const [selectedCheckboxes, setSelectedCheckboxes] = useState([]);
 const [value, setValue] = useState();
-
+const user = useSelector((state) => state.user);
 const onSubmit=async()=>{
   debugger
-  
-  handleChange()
+  handleChange(user.Code,"userId")
+  handleChange(value,"Date")
 var x = await CreateTravel(objReq)
 }
-const isDisabled=selectedCount >= 4;
 const handleCheckboxChange = (event) => {
-debugger
-  const { checked } = event.target;
-  setSelectedCount(prevCount => checked ? prevCount + 1 : prevCount - 1);
+  const checkboxId = event.target.getAttribute('id');
+    const isChecked = event.target.checked;
+  if (isChecked) {
+    debugger
+    // Add the checkbox id to the selected checkboxes
+    setSelectedCheckboxes((prevSelected) => [...prevSelected, checkboxId]);
+  } else {
+    // Remove the checkbox id from the selected checkboxes
+    setSelectedCheckboxes((prevSelected) =>
+      prevSelected.filter((id) => id !== checkboxId)
+    );
+  }
 };
 
+const isDisabled = (checkboxId) => {
+  debugger
+  return selectedCheckboxes.length >= 4 && !selectedCheckboxes.includes(checkboxId);
+};
 
  const handleChange = (selected,key) => {
    debugger
@@ -50,22 +58,7 @@ debugger
     [key]: selected,
   }));
   };
-  // var cnt=0;
-  const handleSubmit = (e) => {
-    debugger
-    if(e)
-    {
-
-      setCnt(cnt+1);
-    }else{
-      setCnt(cnt-1);
-
-    }
-    if(cnt===3){
-      alert("זהווו");
-    
-        }
-  };
+  
     return(
         <div className="main">
             <h1>בקשה חדשה</h1>
@@ -73,13 +66,15 @@ debugger
             <div className='date-time-div'>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
   <DateTimePicker
-    renderInput={(props) => <TextField {...props} />}
+   renderInput={(props) => <TextField {...props} />}
     label="DateTimePicker"
     value={value}
-     onBlur={(e)=>{handleChange(e.target.value,"Date")}}
+      onBlur={(e)=>{handleChange(e.target.value,"Date")}}
    
   />
 </LocalizationProvider>
+
+
             </div>
             <div className='divDest'>
             <TextField id="outlined-basic" label="יעד" variant="outlined"  onBlur={(e)=>{handleChange(e.target.value,"Dest")}}/>
@@ -87,22 +82,22 @@ debugger
             <div >
                  <h3 className='title'>סמן את הנדרש עבורך:</h3>
                  <FormGroup row className='form-group-r'>
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>}id="1" label="אופנוע"  disabled={ isDisabled} onChange={handleCheckboxChange} onClick={(e)=>{ handleChange(e.target.checked,"Motorcycle")} }  />
+                 <FormControlLabel control={<Checkbox id="1" style={{color: '#ff9100'}}/>} label="אופנוע"     disabled={isDisabled("1")} onChange={handleCheckboxChange} onClick={(e)=>{ handleChange(e.target.checked,"Motorcycle")} }  />
                 
               
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} id="2" label="רכב פרטי"  disabled={isDisabled}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Car")} }/>
-                 <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>}id="3" label="אמבולנס"  disabled={isDisabled}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Ambulance")} }/>
+                 <FormControlLabel control={<Checkbox id="2" style={{color: '#ff9100'}}/>}  label="רכב פרטי"     disabled={isDisabled("2")}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Car")} }/>
+                 <FormControlLabel control={<Checkbox id="3" style={{color: '#ff9100'}}/>} label="אמבולנס"     disabled={isDisabled("3")}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Ambulance")} }/>
                  </FormGroup>
                  <FormGroup row className='form-group2-r'>
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>}  id="4" label="מעלון"  disabled={isDisabled}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Elevator")} } />
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>}id="5" label="כסא תינוק" disabled={isDisabled}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"BabyChair")} }/>
-                   <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>}id="6" label="כמות נוסעים "disabled={isDisabled}onChange={handleCheckboxChange} onClick={(e)=>{ setOpenList(openList==true?false:true)}}/>
+                   <FormControlLabel control={<Checkbox id="4" style={{color: '#ff9100'}}/>}   label="מעלון"     disabled={isDisabled("4")}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Elevator")} } />
+                   <FormControlLabel control={<Checkbox id="5" style={{color: '#ff9100'}}/>} label="כסא תינוק"    disabled={isDisabled("5")}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"BabyChair")} }/>
+                   <FormControlLabel control={<Checkbox id="6" style={{color: '#ff9100'}}/>} label="כמות נוסעים "   disabled={isDisabled("6")}onChange={handleCheckboxChange} onClick={(e)=>{ setOpenList(openList==true?false:true)}}/>
                 </FormGroup>
                 {openList&&
                 <div className='passReq' >
                 <label>מספר נוסעים</label>&nbsp;&nbsp;
                 <NativeSelect
-                 disabled={isDisabled}
+                    disabled={isDisabled("6")}
                  onChange={(e)=>{handleChange(e.target.value,"Places")}}
                  inputProps={{
                  name: 'pass',

@@ -6,10 +6,16 @@ import { Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { style } from '@mui/system';
 import {CheckingUser,getUser} from '../Api/Users_Api'
-import Alert from '@mui/material/Alert';
+//import Alert from '@mui/material/Alert';
 import store from '../redux/store';
 import { useDispatch } from 'react-redux';
+<<<<<<< HEAD
+import { setUser } from '../redux/Slices/UserSlice';
+import { Alert, Space } from 'antd';
+// import Swal from 'sweetalert2'
+=======
 import { keepUser} from '../redux/Slices/UserSlice';
+>>>>>>> 63d5fe0ab2381219928541f59a73c78ef815fb88
 
 
 const SignIn =()=>{
@@ -39,9 +45,16 @@ const handleSubmit = async (e) => {
         navigate("/SignUp")
       }
       else{
+<<<<<<< HEAD
+     
+        const userData = await getUser(resHelpeds);
+        debugger
+        dispatch(setUser(userData));
+=======
         // const userData = await getUser(resHelpeds);
         // console.log(userData);
         // dispatch(keepUser(userData));
+>>>>>>> 63d5fe0ab2381219928541f59a73c78ef815fb88
         navigate("/ManagePage");
        }
     }

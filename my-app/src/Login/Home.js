@@ -66,7 +66,7 @@ return (
    {showBtns&&
    <div>
     <div className="logo"></div>
-    <div className="btnWrap" row>
+    <div className="btnWrap" >
     <Button style={{backgroundColor: '#ff9100' , color:'white'}} className='btns' onClick={(hideSignIn)}>
        כניסה
     </Button>

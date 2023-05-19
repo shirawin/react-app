@@ -22,10 +22,6 @@ return (
     <div className="container">
     <h1>הרשמה למערכת</h1>
     <div className='div-user-type'>
-    {/* <RadioGroup row name="user-type" defaultValue="helped" className="user-type" >
-      <FormControlLabel value="helped" label="נעזר" onClick={()=>setVolunteer(false)} control={<Radio style={{color: '#ff9100'}}/>} style={{color: '#a1a1a1'}}/>
-      <FormControlLabel value="volunteer" label="מתנדב" onClick={()=>setVolunteer(true)} control={<Radio style={{color: '#ff9100'}}/>} style={{color: '#a1a1a1'}}/>
-    </RadioGroup> */}
     </div>
     <div className="details">
      <Details userType={1}/>

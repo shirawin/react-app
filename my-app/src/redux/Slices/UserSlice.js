@@ -1,11 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const userSlice = createSlice({
-  name: 'currentUser',
-  initialState: {
-    user: [],
-  },
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: null,
   reducers: {
+<<<<<<< HEAD
+    setUser: (state, action) => {
+      return action.payload;
+    },
+    clearUser: () => null,
+=======
     // keepUser: (state, action) => {
     //   state.user.push(action.payload);
     // },
@@ -15,38 +19,9 @@ const userSlice = createSlice({
           user: actions.payload,
       } 
   }
+>>>>>>> 63d5fe0ab2381219928541f59a73c78ef815fb88
   },
-
 });
 
-// Define the second slice
-// const slice2 = createSlice({
-//   name: 'type',
-//   initialState: {
-//     type:false
-//   },
-//   reducers: {
-//     userType:(state,action)=>{
-//       state.type.push(action.payload);
-//     }
-//   }
-// });
-
-
-
-
-// Combine the slices into a single reducer function
-// const rootReducer = combineReducers({
-//   slice1: slice1.reducer,
-//   slice2: slice2.reducer
-// });
-
-// Export the slices and the combined reducer
-// export const { actions: slice1Actions } = slice1;
-// export const { actions: slice2Actions } = slice2;
-// export default rootReducer;
-
-
-export const { keepUser } = userSlice.actions;
-
-export default userSlice.reducer;
+export const { setUser, clearUser } = authSlice.actions;
+export default authSlice.reducer;

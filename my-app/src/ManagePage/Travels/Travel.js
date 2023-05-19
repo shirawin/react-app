@@ -14,6 +14,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {TakeTravel} from '../../Api/Travels_Api'
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,10 +33,14 @@ const Travel =(Props)=>{
   
   const [expanded, setExpanded] = React.useState(false);
   const listKeys = Object.keys(Props.ls).filter(key => Props.ls[key]);
-  const userType=2;
-  const userTypee = useSelector((state) => state.users.id); 
+  const user = useSelector((state) => state.user);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+  const clickTakeTravel = () => {
+    debugger
+   var res=TakeTravel(Props.idTravel,user.code)
   };
   // const =()=>{
 
@@ -65,18 +70,21 @@ return (
 
         <Typography sx={{ mb: 1 }} color="text.secondary" id="listOfItems" >
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
- 
-  {listKeys.map(key =>{ 
-    return(
-      <>
-      <Grid item xs={5} id="GridCss" key={key}><b>•{key }</b></Grid>
-      </>
-    )
-  //   debugger 
-  // if (Props.ls[key]){
-// } else {
-//   return null; 
-// }
+
+        {listKeys.map(key => {
+  if (key === 'places' && Props.ls[key] > 0) {
+    return (
+      <Grid item xs={5} id="GridCss" key={key}>
+        <b>•{Props.ls[key]} places</b>
+      </Grid>
+    );
+  } else {
+    return (
+      <Grid item xs={5} id="GridCss" key={key}>
+        <b>•{key}</b>
+      </Grid>
+    );
+  }
 })}
  
 
@@ -85,10 +93,10 @@ return (
         
       </CardContent>
       <CardActions>
-      {userType===2&&
-      <Button variant="contained" id="ll" ><b>אני רוצה לעשות טוב😁</b></Button>}
-        {userType===1&&
-        <Button variant="contained" id="ll" ><b>סגור מודעה&nbsp;&nbsp;❌</b></Button>  }
+      {user.usertype&&
+      <Button variant="contained" id="ll" onClick={clickTakeTravel}  ><b>אני רוצה לעשות טוב😁</b></Button>}
+        {!user.usertype&&
+        <Button variant="contained" id="ll" onClick={clickTakeTravel} ><b>סגור מודעה&nbsp;&nbsp;❌</b></Button>  }
         </CardActions>
     
     </Card>  
