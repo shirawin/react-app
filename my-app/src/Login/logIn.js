@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
 }
  
   const navigateToSignup=()=>{
-    navigate("/SignUp")
+    navigate("/signUp")
   }
   useEffect(() => {
     if (!showAlert && navigateTo) {

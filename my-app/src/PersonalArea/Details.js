@@ -9,12 +9,14 @@ import FormGroup from '@mui/material/FormGroup';
 import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import { createUser } from '../Api/Users_Api';
-
-
 import './Details.css'
 
+
+
 const Details =(props)=>{
-const [type,setType]=useState(false);
+
+const [moveRight, setMoveRight] = useState(false);
+const [type,setType]=useState(true);
 const [alarm,setAlarm] = useState(true);
 const[objReq,setObjReq]= useState({"Usertype":false});
 
@@ -32,16 +34,21 @@ const handleChange = (selected,key) => {
    [key]: selected,
  }));
  };
+
+ const handleButtonClick = () => {
+  debugger;
+  setType(false);
+  handleChange(true,"Usertype");
+  setMoveRight(true);
+};
 return (
     <>
- 
-   <div className='div-wrp'>
+   {/* <div className='div-wrp'>
     <div className='div-title'>
         פרטים אישיים:
     </div>
     <div className='div-personal-detailes2'>
     <TextField id="outlined-basic" label="שם" variant="outlined"  onBlur={(e)=>{ handleChange(e.target.value,"Fullname")} }  /> 
-    {/* value={objUser.name!==undefined?objUser.name: props.userDetails.name} */}
     <TextField id="outlined-basic" label="טלפון נייד" variant="outlined"  onBlur={(e)=>{ handleChange(e.target.value,"Phone")} }  />
     </div>
     <div className='div-personal-detailes2'>
@@ -101,7 +108,89 @@ return (
                     <span></span>
                     <Button style={{backgroundColor: '#ff9100'}} className='ok' variant="contained" onClick={()=>{
                         onSubmit()} }>אישור</Button>
-    </div> 
+    </div>  */}
+
+    <div id="divSignUp">
+    {/* {moving-div ${moveRight ? 'move-right' : ''}} */}
+      <div id="login" className={`login-form-container-sign${moveRight ? '-right' : ''}`}>
+         <header id="h">{props.header}</header>
+         <fieldset id="feild">
+            <div class="input-wrapper-sign">
+              <input id="insign" type="text" placeholder="שם" onBlur={(e)=>{ handleChange(e.target.value,"Fullname")}} />
+            </div>
+            <div class="input-wrapper-sign">
+              <input id="insign" type="password" placeholder="טלפון נייד" onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
+            </div>
+            <div class="input-wrapper-sign">
+              <input id="insign" type="email" placeholder="your@email.com" onBlur={(e)=>{ handleChange(e.target.value,"Email")}} />
+            </div>
+            <div class="input-wrapper-sign">
+              <input id="insign" type="password" placeholder="סיסמה" onBlur={(e)=>{ handleChange(e.target.value,"Password")}}/>
+            </div>
+            <div class="input-wrapper-sign">
+              <input id="insign" type="text" placeholder="עיר" onBlur={(e)=>{ handleChange(e.target.value,"City")}} />
+            </div>
+            <div class="input-wrapper-sign">
+              <input id="insign" type="text" placeholder="רחוב" onBlur={(e)=>{ handleChange(e.target.value,"Street")}} />
+            </div>
+            <div class="input-wrapper-sign">
+              <input id="insign" type="number" placeholder="בית" onBlur={(e)=>{ handleChange(e.target.value,"Housenumber")}}/>
+            </div>
+            {type&&
+            <>
+            <a className="signup" id="vol">מתנדב? <span className='link' onClick={handleButtonClick}>הוסף פרטים כאן</span></a>
+            <Button id="continue" type="submit" >כניסה</Button>
+            </>
+            }
+        </fieldset>
+      </div>
+      {/* פרטים עבור מתנדב */}
+      {!type&&
+      <div id="moreDetailes" class="login-form-container2">
+         {/* <header id="h">{props.header}</header> */}
+         <fieldset id="feild">
+            <div class="input-wrapper-sign">
+                <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אופנוע" onClick={(e)=>{ handleChange(e.target.checked,"Motorcycle")} } />
+            </div>
+            <div class="input-wrapper-sign">
+                <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="רכב פרטי" onClick={(e)=>{ handleChange(e.target.checked,"Privatecar")} } />
+            </div>
+            <div class="input-wrapper-sign">
+                <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="אמבולנס" onClick={(e)=>{ handleChange(e.target.checked,"Ambulance")} } />
+            </div>
+            <div class="input-wrapper-sign">
+                <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="מעלון" onClick={(e)=>{ handleChange(e.target.checked,"Elevator")} } />
+            </div>
+            <div class="input-wrapper-sign">
+                <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" onClick={(e)=>{ handleChange(e.target.checked,"Babychair")} } />
+            </div>
+            <div class="input-wrapper-sign">
+            <input id="insign" type="number" placeholder="מספר מקומות" onBlur={(e)=>{ handleChange(e.target.value,"Numofsits")} } />
+            </div>
+            <div  class="input-wrapper-sign">
+              <span className='mail'>התראות לדוא"ל:</span> 
+              <br/>
+              <Switch  defaultChecked  color="warning" />
+              <input
+                style={{color: '#ff9100', backgroundColor:'#272E38',border:'none',height:'5vh' ,width:'6vw',fontSize:'2em'}}
+                placeholder="משעה"
+                type="time"
+                defaultValue="08:00"
+               />
+               <span>&nbsp;&nbsp;&nbsp;</span>
+              <input
+                style={{color: '#ff9100', backgroundColor:'#272E38',border:'none',height:'5vh' ,width:'6vw',fontSize:'2em'}}
+                placeholder="עד שעה"
+                type='time'
+                defaultValue="20:00"
+              />
+            </div>
+            <Button id="continue" type="submit" >אישור</Button>
+        </fieldset>
+      </div>
+      }
+    </div>
+
     </>
 )
 }
