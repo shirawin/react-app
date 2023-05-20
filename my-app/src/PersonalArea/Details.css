@@ -1,92 +1,247 @@
-.div-wrp{
-    /* background-color:pink; */
-    /* margin-right:19%; */
-    width:80%;
-    padding-left: 2%; 
-    
+#divSignUp {
+    color: #fff;
+    font-family: arial, helvetica, sans-serif;
+    line-height: 1.4;
+    font-size: 0.6em;
+    width: 100vw;
+    height: 100vh;
 }
-.div-personal-detailes2{
-    width: 60%;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    /* background-color:blue; */
-    flex-wrap: wrap;
-    padding-bottom: 0.5%;
-    padding-top: 0.5%;
+.login-form-container-sign-right{
+    position: fixed;
+    top: 50%;
+    left: 65%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 400px;
+    border-radius: 3px;
+    background-color: #272E38;
+    overflow: hidden;
+    animation: lower 2s forwards;
+    .denied & {
+        animation: shake 0.35s normal forwards ease-in-out;
+      }
+      #h {
+        background-color: #202731;
+        color: #C5C6C8;
+        display: block;
+        padding: 0.7em;
+        text-align: center;
+        font-size: 2.2em;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bold;
+      }
+  .input-wrapper-sign{
+      position: relative;
+      display: block;
+      margin: 2em auto;
+      border-bottom: 1px solid orange;
+      border-radius: 3px;
+      width: 270px;
+      padding-left: 20px;
+      color: #C5C6C8;
+      #insign {
+        width: 100%;
+        line-height: 2;
+        color: #C5C6C8;
+        background-color: transparent;
+        border: none;
+        padding: .6em -0.5em;
+        outline: 0;
+        font-size: 2em;
+        font-family:Arial, Helvetica, sans-serif;
+        }
+  }
+  #feild {
+      border:none;
+    }
+    #continue {
+      outline: 0;
+      letter-spacing: 0.1em;
+      background-color:orange;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      width: 200px;
+      padding: 1em 0;
+      margin: 1.3em auto;
+      display: block;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      font-size: 1.2em;
+      font-weight: bold;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    #continue:hover {
+      cursor: pointer;
+    }
+    .signup{
+      margin-right: 25%;
+      /* background-color: red; */
+      font-size:2em
+    }
+    .signup:hover{
+      cursor: pointer;
+    }
+    .link{
+      color: orange;
+    }
 }
-.div-title{
-    padding-top: 0.5%;
+.login-form-container-sign{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 400px;
+    border-radius: 3px;
+    background-color: #272E38;
+    overflow: hidden;
+    animation: lower 2s forwards;
+    .denied & {
+      animation: shake 0.35s normal forwards ease-in-out;
+    }
+    #h {
+      background-color: #202731;
+      color: #C5C6C8;
+      display: block;
+      padding: 0.7em;
+      text-align: center;
+      font-size: 2.2em;
+      font-family:Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+.input-wrapper-sign{
+    position: relative;
+    display: block;
+    margin: 2em auto;
+    border-bottom: 1px solid orange;
+    border-radius: 3px;
+    width: 270px;
+    padding-left: 20px;
+    color: #C5C6C8;
+    #insign {
+      width: 100%;
+      line-height: 2;
+      color: #C5C6C8;
+      background-color: transparent;
+      border: none;
+      padding: .6em -0.5em;
+      outline: 0;
+      font-size: 2em;
+      font-family:Arial, Helvetica, sans-serif;
+      }
 }
-.div-address2{
-    width:70%;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    /* background-color:blueviolet; */
-    flex-wrap: wrap;
-    padding-bottom: 0.5%;
-    padding-top: 0.5%;
-    padding-right: 0.7%;
+#feild {
+    border:none;
+  }
+  #continue {
+    outline: 0;
+    letter-spacing: 0.1em;
+    background-color:orange;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+    padding: 1em 0;
+    margin: 1.3em auto;
+    display: block;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  #continue:hover {
+    cursor: pointer;
+  }
+  .signup{
+    margin-right: 25%;
+    /* background-color: red; */
+    font-size:2em
+  }
+  .signup:hover{
+    cursor: pointer;
+  }
+  .link{
+    color: orange;
+  }
 }
-.num{
-    width:14%;
-}
-.okWrap2{ 
-    display: flex; 
-    flex-direction: row;
-    justify-content:end;
-    /* background-color:springgreen; */
-    flex-wrap: wrap;
-    padding-top:2%;
-    margin-right: 2.5%;
-    width:30%;
-}
-.formGroup{
-    width:60%;
-    display: flex;
-    justify-content:space-between;
-    /* background-color:springgreen;  */
-    flex-wrap: wrap;
-    padding-right: 0.7%;
- 
-}
-.formGroup2{
-    width:37%;
-    display: flex;
-    justify-content:space-between;
-    /* background-color:red;  */
-    flex-wrap: wrap;
-    padding-right: 0.5%;
-}
-#vol{
-    margin-right:5%;
-    /* background-color:aqua; */
-}
-.ok{
-    height: 7vh;
-    width: 10vw;
-    padding: 5%;;
-    float: right;
-}
-.div-places{
-    width: 20%;
-    display: flex;
-    padding-right: 0.7%;
-    padding-top: 0.7%;
-    padding-bottom: 0.5%;
-    /* background-color:red; */
-}
-.alarmTime{
-    /* background-color:red; */
-    padding-right: 0.7%;
-    padding-top: 0.9%;
-    width:60%;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    flex-wrap: wrap;
+.login-form-container2{
+    position: fixed;
+    top: 50%;
+    left: 35%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 400px;
+    border-radius: 3px;
+    background-color: #272E38;
+    overflow: hidden;
+    animation: lower 2s forwards;
+    .denied & {
+      animation: shake 0.35s normal forwards ease-in-out;
+    }
+    #h {
+        background-color: #202731;
+        color: #C5C6C8;
+        display: block;
+        padding: 0.7em;
+        text-align: center;
+        font-size: 2.2em;
+        font-family:Arial, Helvetica, sans-serif;
+        font-weight: bold;
+      }
+  .input-wrapper-sign{
+      position: relative;
+      display: block;
+      margin: 1.5em auto;
+      /* border-bottom: 1px solid orange; */
+      border-radius: 3px;
+      width: 270px;
+      padding-left: 20px;
+      color: #C5C6C8;
+      #insign {
+        width: 100%;
+        line-height: 2;
+        color: #C5C6C8;
+        background-color: transparent;
+        border: none;
+        padding: .6em -0.5em;
+        outline: 0;
+        font-size: 2em;
+        font-family:Arial, Helvetica, sans-serif;
+        }
+  }
+  #feild {
+      border:none;
+    }
+    #continue {
+      outline: 0;
+      letter-spacing: 0.1em;
+      background-color:orange;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      width: 200px;
+      padding: 1em 0;
+      margin: 1.3em auto;
+      display: block;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      font-size: 1.2em;
+      font-weight: bold;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    #continue:hover {
+      cursor: pointer;
+    }
 }
 .mail{
-    margin-top:1.5%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8em;
+} 
+#moreDetailes{
+    padding: 10px;
+    box-shadow: 0px 30px 30px  0 rgba(0, 0, 0, 0.5); /* Add a box shadow to create the shaded effect */
+
 }
+#login{
+    box-shadow: 15px 30px 30px  0 rgba(0, 0, 0, 0.5); /* Add a box shadow to create the shaded effect */
+    padding: 10px; /* Add some padding to the div */
+  }

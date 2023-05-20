@@ -1,43 +1,4 @@
-/* .ok-div-Wrap{
- width: 49.9%;
- display: flex;
- justify-content: center;
-}
-.ok{
-    width:80vw;
-    height: 7vh;
-    font-weight: bold;
-}
-.signup{
-    margin-top: 0.5%;
-    background-color:white;
-}
-.link{
-    color:#ff9100;
-    font-style: italic;
-    cursor: pointer;
-}
-.name{
-    margin: 1.5%;
-    margin-right: 14%;
-}
-.pass{
-    margin: 1.5%;
-    margin-right: 14%;
-}
-.login{
-    width: 70%;
-    margin-right:30%;
-    margin-top: 7%;
-}
-.title{
-    margin-right: 11vw;
-} */
 #divLogin {
-  /* background-color:gray; */
-  /* background-image:url('../Images/back.png');
-  background-repeat:no-repeat;
-  background-size: cover; */
   color: #fff;
   font-family: arial, helvetica, sans-serif;
   line-height: 1.4;
@@ -52,7 +13,6 @@
   width: 6vw;
   margin: 1vh;
   cursor: pointer;
-  background-color: #202731;
   position: fixed
   ;
 }
