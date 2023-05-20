@@ -41,10 +41,11 @@ const handleSubmit = async (e) => {
         navigate("/signUp")
       }
       else{
-        // const userData = await getUser(resHelpeds);
-        // console.log(userData);
-        // dispatch(keepUser(userData));
-        navigate("/managePage");
+     
+        const userData = await getUser(resHelpeds);
+        debugger
+        dispatch(setUser(userData));
+        navigate("/ManagePage");
        }
     }
 }
