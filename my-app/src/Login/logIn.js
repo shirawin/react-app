@@ -10,7 +10,7 @@ import {CheckingUser,getUser} from '../Api/Users_Api'
 import store from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/Slices/UserSlice';
-import { Alert, Space } from 'antd';
+// import { Alert, Space } from 'antd';
 // import Swal from 'sweetalert2'
 
 
@@ -38,7 +38,7 @@ const handleSubmit = async (e) => {
     else{
       if(resHelpeds==2){
         alert("משתמש לא קיים")
-        navigate("/SignUp")
+        navigate("/signUp")
       }
       else{
      
@@ -54,7 +54,7 @@ const handleSubmit = async (e) => {
 }
  
   const navigateToSignup=()=>{
-    navigate("/SignUp")
+    navigate("/signUp")
   }
 
 

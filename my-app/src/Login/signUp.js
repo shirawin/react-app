@@ -19,16 +19,10 @@ const SignUp =()=>{
 return (
   <div>
     <div id="backTohome" onClick={()=>navigate("/")}></div>
-    <div className="container">
-    <h1>הרשמה למערכת</h1>
-    <div className='div-user-type'>
-    </div>
-    <div className="details">
-     <Details userType={1}/>
-     
-    </div>
-    </div>
-    </div>
+         <div className="details">
+          <Details screen={'signup'} header={'הרשמה למערכת'}/> 
+         </div>
+ </div>
  )
 }
 export default SignUp
