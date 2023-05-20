@@ -1,4 +1,4 @@
-import React ,{ useState } from 'react'
+import React ,{ useState , useEffect} from 'react'
 import TextField from '@mui/material/TextField';
 import {Button,Box} from '@mui/material';
 import './logIn.css'
@@ -6,17 +6,21 @@ import { Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { style } from '@mui/system';
 import {CheckingUser,getUser} from '../Api/Users_Api'
-//import Alert from '@mui/material/Alert';
 import store from '../redux/store';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/Slices/UserSlice';
-import { Alert, Space } from 'antd';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 // import Swal from 'sweetalert2'
-
-
 const SignIn =()=>{
   
   const dispatch = useDispatch();
+  const [showAlert, setShowAlert] = useState(false);
+  const [contentAlert, setContentAlert] = useState('');
+  const [navigateTo, setNavigateTo] = useState('');
+  
+
   const [logIn, setLogIn] = useState({
     userName: '',
     password: ''
@@ -29,16 +33,25 @@ const handleSubmit = async (e) => {
   const resHelpeds = await CheckingUser(logIn.userName,logIn.password);
   
    if(resHelpeds==-1){
-  alert("שם משתמש וסיסמה נכונים+משתמש לא פעיל");
+    setContentAlert('שם משתמש וסיסמה נכונים+משתמש לא פעיל')
+    setShowAlert(true);
+    return; 
+ 
    }
   else{
     if(resHelpeds==1){
-      alert("סיסמה שגויה ")
+      setContentAlert('סיסמא שגויה')
+      setShowAlert(true);
+      return; 
     }
     else{
-      if(resHelpeds==2){
-        alert("משתמש לא קיים")
-        navigate("/SignUp")
+      if (resHelpeds === 2) {
+        setContentAlert('משתמש לא קיים');
+        setShowAlert(true);
+        setNavigateTo('/SignUp');
+        return;
+      
+
       }
       else{
      
@@ -56,7 +69,11 @@ const handleSubmit = async (e) => {
   const navigateToSignup=()=>{
     navigate("/SignUp")
   }
-
+  useEffect(() => {
+    if (!showAlert && navigateTo) {
+      navigate(navigateTo);
+    }
+  }, [showAlert, navigateTo]);
 
 return (
   //  <div className='login'>
@@ -90,7 +107,22 @@ return (
     <Button id="continue" type="submit" >כניסה</Button>
     </fieldset>
     </div>
-</div>
+    {showAlert && (
+      <>
+        <div className="darken-background" />
+        <div className="alert-container">
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert
+       severity="warning" onClick={() => setShowAlert(false)}>
+        <AlertTitle>אופס...</AlertTitle>
+     {contentAlert} — <strong>נסה שנית!</strong>
+     </Alert>
+          </Stack>
+        </div>
+      </>
+    )}
+  </div>
+
 </Box>
     
 );

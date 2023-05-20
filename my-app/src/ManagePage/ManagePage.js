@@ -95,6 +95,7 @@ useEffect(() => {
   };
   //בלחיצה על הכפתור למעבר לעדכון פרטים אישיים
   const submit = async (e) => {
+  debugger
     e.preventDefault();
     navigate("/PersonalArea")
   }

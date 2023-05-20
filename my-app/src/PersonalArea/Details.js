@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import { createUser } from '../Api/Users_Api';
 
+
 import './Details.css'
 
 const Details =(props)=>{
@@ -73,7 +74,7 @@ return (
       <FormControlLabel control={<Checkbox style={{color: '#ff9100'}}/>} label="כסא תינוק" onClick={(e)=>{ handleChange(e.target.checked,"Babychair")} } />
     </FormGroup>
     <div className='div-places'>
-    <TextField id="outlined-basic" label="מספר מקומות " variant="outlined"  type="number"  onBlur={(e)=>{ handleChange(e.target.value,"Numofsits")} } />
+    <TextField id="outlined-basic" label="מספר מקומות " variant="outlined"  type="number"  onBlur={(e)=>{handleChange(e.target.value,"Numofsits")} } />
     </div>
     <div >
        <div className='alarmTime'>
