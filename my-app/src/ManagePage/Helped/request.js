@@ -12,12 +12,11 @@ import Button from '@mui/material/Button';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { CreateTravel } from '../../Api/Travels_Api';
 import { useSelector } from 'react-redux';
-
-
+import Datetime from 'react-datetime';
+import "react-datetime/css/react-datetime.css";
 import './request.css'
 
 const Request=()=>{
-  const id = useSelector((state) => state.users.id); 
  const[openList,setOpenList]= useState(false);
  const[objReq,setObjReq]= useState({});
  const[cnt,setCnt]= useState(0);
@@ -64,17 +63,8 @@ const isDisabled = (checkboxId) => {
             <h1>בקשה חדשה</h1>
             <div className='div-title-req'>מתי?</div>
             <div className='date-time-div'>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-  <DateTimePicker
-   renderInput={(props) => <TextField {...props} />}
-    label="DateTimePicker"
-    value={value}
-      onBlur={(e)=>{handleChange(e.target.value,"Date")}}
-   
-  />
-</LocalizationProvider>
 
-
+    <Datetime/>
             </div>
             <div className='divDest'>
             <TextField id="outlined-basic" label="יעד" variant="outlined"  onBlur={(e)=>{handleChange(e.target.value,"Dest")}}/>
@@ -83,8 +73,6 @@ const isDisabled = (checkboxId) => {
                  <h3 className='title'>סמן את הנדרש עבורך:</h3>
                  <FormGroup row className='form-group-r'>
                  <FormControlLabel control={<Checkbox id="1" style={{color: '#ff9100'}}/>} label="אופנוע"     disabled={isDisabled("1")} onChange={handleCheckboxChange} onClick={(e)=>{ handleChange(e.target.checked,"Motorcycle")} }  />
-                
-              
                  <FormControlLabel control={<Checkbox id="2" style={{color: '#ff9100'}}/>}  label="רכב פרטי"     disabled={isDisabled("2")}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Car")} }/>
                  <FormControlLabel control={<Checkbox id="3" style={{color: '#ff9100'}}/>} label="אמבולנס"     disabled={isDisabled("3")}onChange={handleCheckboxChange} onClick={(e)=>{handleChange(e.target.checked,"Ambulance")} }/>
                  </FormGroup>
