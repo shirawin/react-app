@@ -28,6 +28,7 @@ const onSubmit=async()=>{
   debugger
   handleChange(user.Code,"userId")
   handleChange(value,"Date")
+
 var x = await CreateTravel(objReq)
 }
 const handleCheckboxChange = (event) => {
@@ -57,6 +58,9 @@ const isDisabled = (checkboxId) => {
     [key]: selected,
   }));
   };
+    const handleDateChange = (selectedDate) => {
+    setValue( selectedDate);
+  };
   
     return(
         <div className="main">
@@ -64,7 +68,7 @@ const isDisabled = (checkboxId) => {
             <div className='div-title-req'>מתי?</div>
             <div className='date-time-div'>
 
-    <Datetime/>
+    <Datetime onChange={handleDateChange}/>
             </div>
             <div className='divDest'>
             <TextField id="outlined-basic" label="יעד" variant="outlined"  onBlur={(e)=>{handleChange(e.target.value,"Dest")}}/>

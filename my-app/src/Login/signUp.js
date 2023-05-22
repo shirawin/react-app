@@ -20,7 +20,7 @@ return (
   <div>
     <div id="backTohome" onClick={()=>navigate("/")}></div>
          <div className="details">
-          <Details screen={'signup'} header={'הרשמה למערכת'}/> 
+          <Details screen={false} header={'הרשמה למערכת'} type={true}/> 
          </div>
  </div>
  )
