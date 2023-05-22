@@ -1,3 +1,6 @@
+body::-webkit-scrollbar {
+  display: none;
+}
 #divSignUp {
     color: #fff;
     font-family: arial, helvetica, sans-serif;
@@ -245,3 +248,6 @@
     box-shadow: 15px 30px 30px  0 rgba(0, 0, 0, 0.5); /* Add a box shadow to create the shaded effect */
     padding: 10px; /* Add some padding to the div */
   }
+.input-wrapper-signAlarm{
+  margin-right: 3.5vw;
+}

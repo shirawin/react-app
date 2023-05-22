@@ -84,7 +84,7 @@ h2{
   background-color: lightgray;
  }
  #bar{
-  background-color: #a1a1a1;
+  background-color:gray;
  }
  #input-cities{
   border: #a1a1a1;
@@ -101,5 +101,10 @@ border-radius: 6%;
 }
 
 #main{
-  background-color: lightgrey;
+  background-image:url('../Images/back.png');
+  background-repeat:no-repeat;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
 }
