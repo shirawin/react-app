@@ -28,7 +28,6 @@ const[objReq,setObjReq]= useState({"Usertype":false});
  var newArr=[]
  useEffect(()=>{
    console.log(props.screen)
-   debugger
 if(submit){
   debugger
   var obj={Minhour :minAlarm,Maxhour:maxAlarm}
@@ -42,27 +41,31 @@ if(props.screen&&props.type){
 }
 } ,[submit])
 const handleTime=()=>{
-  debugger
+  
   var obj={Minhour :minAlarm,Maxhour:maxAlarm}
   newArr.push(obj)
   setListAlarms(listAlarms.concat(obj));
   setMinAlarm("08:00");
   setMaxAlarm("20:00");
-  handleChange(listAlarms,"listOfAlarms")
+  // handleChange(listAlarms,"listOfAlarms")
 }
 const onSubmit=async()=>{
   debugger
+  objReq.listOfAlarms=listAlarms
+  console.log(objReq.listOfAlarms+"submit")
+
   var x = await createUser(objReq)
   if(x){
     alert("נוסף בהצלחה,הידד!!")
   }
 }
 const handleChange = (selected,key) => {
-  debugger
+  
  setObjReq((prev) => ({
    ...prev,
    [key]: selected,
  }));
+
  };
 
  const handleButtonClick = () => {
@@ -84,7 +87,7 @@ return (
               <input id="insign" type="text" placeholder="שם" onBlur={(e)=>{ handleChange(e.target.value,"Fullname")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="password" placeholder="טלפון נייד" onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
+              <input id="insign" type="text" placeholder="טלפון נייד" onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
             </div>
             <div class="input-wrapper-sign">
               <input id="insign" type="email" placeholder="your@email.com" onBlur={(e)=>{ handleChange(e.target.value,"Email")}} />

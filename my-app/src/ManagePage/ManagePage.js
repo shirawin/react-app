@@ -18,6 +18,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
 import { useSelector } from 'react-redux'; 
+import {orangcar} from '../Images/orangcar.png'
+import { HubConnectionBuilder } from "@microsoft/signalr";
+import * as signalR from '@microsoft/signalr';
 const ManagePage = () => {
   const navigate = useNavigate();
   const [auth, setAuth] = useState(true);
@@ -30,13 +33,62 @@ const ManagePage = () => {
   const [disable, setDisable] = useState(true);
   const [searchObj, setSerchObj] = useState([]);
   const [city, setCity] = useState("");
+  const [connection, setConnection] = useState(null);
   const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
-  const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
   const [resData, setResData] = useState([]);
-  const userType =1;
-  
   const user = useSelector((state) => state.user);
+
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+
  //מתנדב-true
+
+
+ useEffect(() => {
+  const newConnection = new signalR.HubConnectionBuilder()
+    .withUrl("https://localhost:44330" + "/hubs/chat")
+    .withAutomaticReconnect()
+    .build();
+
+  setConnection(newConnection);
+}, []);
+
+// const createConnection = () => {
+//   debugger
+//   if (connection === null) {
+//     const newConnection = new HubConnectionBuilder()
+//       .withUrl("https://localhost:44330" + "/my-hub", {
+//         skipNegotiation: true,
+//         transport: signalR.HttpTransportType.WebSockets,
+//       })
+//       .withAutomaticReconnect()
+//       .build();
+//     setConnection(newConnection);
+//   }
+// };
+const GetAllTravels=async()=>{
+
+}
+
+
+
+// useEffect(() => {
+//   if (connection) {
+//     connection.start()
+//       .then(() => console.log('Connection started!'))
+//       .catch(err => console.error('Error while establishing connection:', err));
+
+//     connection.on('ReceiveMessage', (user, message) => {
+//       setMessages([...messages, { user, message }]);
+//     });
+//   }
+// }, [connection, messages]);
+
+// const sendMessage = () => {
+//   connection.invoke('SendMessage', 'User', message);
+//   setMessage('');
+// };
+
   //כשחל שינוי בתאריך הראשון
   const onChange =(selected,key)=>{
     setSerchObj((prev) => ({
@@ -52,7 +104,7 @@ const fetchData = async () => {
     data= await getActivTravels();
   }
   else{
-    data= await GetTravelsByUser(user.Code);
+    data= await GetTravelsByUser(user.code);
   }
   setResData(data);
  
@@ -118,19 +170,18 @@ useEffect(() => {
     }
     prevOpen.current = open;
   }, [open]);
-  useEffect(() => {
-    const uuid = localStorage.getItem("uuid");
-    !uuid && Navigate("/home");
-  });
+
   return (
     <div id="main">
-      <Box >
+      <Box id="boxBar" >
         <AppBar position="static" id="bar">
           <Toolbar>
+          {/* <button onClick={sendMessage}>Send</button> */}
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             </Typography>
             {auth && (
               <div>
+                {user.fullname}
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -153,7 +204,7 @@ useEffect(() => {
           alignItems="center">
           <Grid item style={{ width: '14vw'}}>
             <FormControl id="cityLabel">
-              <InputLabel >עיר</InputLabel>
+              <InputLabel >מעיר</InputLabel>
               <Select
                 labelId="cityLabel"
                 id="city"
@@ -208,7 +259,10 @@ useEffect(() => {
       </Box>
       </FormControl>
       <br />
+      <div id="travel">
       {resData.map((dd) => <Travel dest={dd.dest} from={dd.city} ls={dd.list} Date={dd.date} idTravel={dd.travelId}/>)}
+      < div id="picture"></div>
+</div>
     </div>
   )
 }

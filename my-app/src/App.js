@@ -8,6 +8,8 @@ import PersonalArea from './PersonalArea/PersonalArea';
 import ManagePage from './ManagePage/ManagePage';
 import About from './Login/about';
 import Contact from './Login/contact';
+import TableUsers from './PersonalArea/TableUsers';
+
 import SignUp from './Login/signUp';
 import SignIn from './Login/logIn';
 import rtlPlugin from "stylis-plugin-rtl";
@@ -49,6 +51,7 @@ function App() {
                  <Route exact path='/ManagePage' element={< ManagePage />}></Route>
                  <Route exact path='/personalArea' element={< PersonalArea />}></Route>
                  <Route exact path='/signUp' element={< SignUp />}></Route>
+                 <Route exact path='/TableUsers' element={< TableUsers />}></Route>
           </Routes>
           </div>
        </Router>

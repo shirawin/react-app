@@ -9,7 +9,7 @@ import Details from './Details'
 import Request from '../ManagePage/Helped/request'
 import  './PersonalArea.css'
 import { useSelector } from 'react-redux';
-import ManagePage from '../ManagePage/ManagePage';
+import TableUsers from '../PersonalArea/TableUsers';
 //מתנדב:עדכון פרטים
 //נעזר:עדכון פרטים,יצירת מודעה
 const PersonalArea =()=>{
@@ -20,18 +20,26 @@ const PersonalArea =()=>{
       const user = useSelector((state) => state.user);
       return (
    
-    <Box sx={{ width: '100%', typography: 'body1' }}   >
+    <Box sx={{ width: '100%', typography: 'body1',backgroundColor:'lightgray' }}   >
     
     {user.usertype&&
-  <>
+  <> 
+  {user.password=="admin"&&
+      <>
+
+      </>
+    }
     <TabContext value={value} >
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}id="heade">
         <TabList onChange={handleChange} aria-label="lab API tabs example" id="bra">
           <Tab label="עדכון פרטים" value="1" />
+          <Tab label="טבלת משתמשים" value="2" />
         </TabList>
       </Box>
        <TabPanel value="1" > <Details screen={true} header={'עדכון פרטים'} type={user.usertype}/> </TabPanel>
+       <TabPanel value="2" > <TableUsers/> </TabPanel>
     </TabContext>
+   
     </>
      }
      {!(user.usertype)&&
