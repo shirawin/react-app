@@ -26,8 +26,12 @@ export const getUser = async (code) => {
     return await (await axios.get(`https://localhost:44330/api/Users/${code}`)).data;
 
 }
+export const changeActivity = async (userID,activeStatus) => {
+    return await (await axios.get(`https://localhost:44330/api/Users/changeActivity/${userID}/${activeStatus}`));
+
+}
 export const createUser= async(data)=>{
-    debugger
+    console.log(data.listOfAlarms+"api")
   return await (await axios.post(CreateUser, data)).data;
       
 }

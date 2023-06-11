@@ -30,8 +30,19 @@ const cacheRtl = createCache({
 });
 
 const Travel =(Props)=>{
+  const datetime = new Date(Props.Date);
+
+  // Extracting the date
+  const year = datetime.getFullYear();
+  const month = datetime.getMonth() + 1; // Note: Months are zero-based, so we add 1
+  const day = datetime.getDate();
+  const date = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`;
   
-  const [expanded, setExpanded] = React.useState(false);
+  // Extracting the time
+  const hours = datetime.getHours();
+  const minutes = datetime.getMinutes();
+  const time = `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+    const [expanded, setExpanded] = React.useState(false);
   const listKeys = Object.keys(Props.ls).filter(key => Props.ls[key]);
   const user = useSelector((state) => state.user);
 
@@ -52,16 +63,17 @@ return (
         <Typography sx={{ fontSize: 14 }} className="headercss">
        {<>{Props.from}&nbsp;<span>לכיוון</span>&nbsp;{Props.dest}</>}
         </Typography>
+        <br/>
         <div style={{height: 7}}></div>
         <Grid  container 
   direction="row-reverse"
   justifyContent="center"
   alignItems="center">
         <Typography sx={{ fontSize: 14,marginLeft:10 }} className="secondLine">
-        {Props.Date}
+        {date}
         </Typography>
         <Typography sx={{ fontSize: 14 }} className="secondLine">
-       שעה
+       {time}
         </Typography></Grid>        <div style={{height: 7}}></div>
 
         <Typography variant="h5" component="div">
