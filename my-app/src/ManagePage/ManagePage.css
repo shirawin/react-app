@@ -20,9 +20,9 @@ nav{
 }
 p{
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     /* width: 7vw; */
-    background-color: #ff9100;
+    /* background-color: #ff9100; */
     margin: 2%;
 
 }
@@ -51,10 +51,11 @@ h2{
 #form{
     padding: 0px;
     margin: 0px;
-   
-    margin-top: 16px;
+    margin-top: 10vh;
     width: 98%;
     justify-content: space-between;
+    position: fixed;
+    z-index: 5;
   }
   #city{
     background-color: #ff9100;
@@ -112,8 +113,18 @@ border-radius: 6%;
 #main{
   background-image:url('../Images/back.png');
   background-repeat:no-repeat;
-  background-size: cover;
   position: relative;
-  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
   width: 100vw;
+  height: 100vw;
+ 
+}
+#boxBar{
+  position: fixed;
+  width: 100vw;
+  z-index: 7;
+}
+#travel{
+  margin-top: 15vh;
 }

@@ -31,3 +31,7 @@
     position: fixed ;
     right:2vw;
 }
+
+body{
+    background-color: lightgray;
+}

@@ -3,8 +3,8 @@ body{
     direction: rtl;
 }
 #cardcss{
-    background-color: lightgray;
-    box-shadow: 5px 5px 5px;
+    background-image:url('../../Images/orangcar.png');
+    /* box-shadow: 5px 5px 5px 5px; */
     margin: 3%;
     height: 50vh;
     display: inline-block;
@@ -12,19 +12,23 @@ body{
     position: relative;
     right: 8vw;
 
-
+background-color: lightgray;
 
 }
 #listOfItems{
     height: 20vh;
 }
 .headercss{ 
+    box-shadow: 5px 5px 5px  black;
+
     font-size: 3vh;   
 height: 5vh;
 text-align: center;
 background-color: gray;
 }
 .secondLine{    
+    box-shadow: 5px 5px 5px  black;
+font-weight: bolder;
 width: 6vw;
     background-color: gray;
     }
@@ -37,10 +41,12 @@ h1{
 #cardcss:hover,#headercss:hover{
     background-color: #ff9100;}
 #ll{
+    top:-2vh;
 background-color: grey;
 color: #ff9100;
 right: 4vw;
 
+    box-shadow: 5px 5px 5px  black;
 }
 #GridCss{
     top: 1vh;

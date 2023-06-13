@@ -29,7 +29,6 @@ const[objReq,setObjReq]= useState({"Usertype":false});
  var newArr=[]
  useEffect(()=>{
    console.log(props.screen)
-   debugger
 if(submit){
   debugger
   var obj={Minhour :minAlarm,Maxhour:maxAlarm}
@@ -43,27 +42,31 @@ if(props.screen&&props.type){
 }
 } ,[submit])
 const handleTime=()=>{
-  debugger
+  
   var obj={Minhour :minAlarm,Maxhour:maxAlarm}
   newArr.push(obj)
   setListAlarms(listAlarms.concat(obj));
   setMinAlarm("08:00");
   setMaxAlarm("20:00");
-  handleChange(listAlarms,"listOfAlarms")
+  // handleChange(listAlarms,"listOfAlarms")
 }
 const onSubmit=async()=>{
   debugger
+  objReq.listOfAlarms=listAlarms
+  console.log(objReq.listOfAlarms+"submit")
+
   var x = await createUser(objReq)
   if(x){
     alert("נוסף בהצלחה,הידד!!")
   }
 }
 const handleChange = (selected,key) => {
-  debugger
+  
  setObjReq((prev) => ({
    ...prev,
    [key]: selected,
  }));
+
  };
 
  const handleButtonClick = () => {

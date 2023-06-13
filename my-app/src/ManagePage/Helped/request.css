@@ -7,13 +7,14 @@
     flex-wrap: wrap;
     padding-bottom: 0.5%;
     float:right;
+    background-color: lightgray;
 } 
 h3{
-  color: #a1a1a1;
+  color: black;
   padding-right:1%;
 }
 .div-title-req{
-    color: #a1a1a1;
+    color: black;
     font-weight: bold;
     padding-right:1%;
 }
@@ -35,6 +36,7 @@ h3{
 .form-group-r{
   width:50%;
   display: flex;
+  font-size:1.8rem;
   justify-content:space-between;
   /* background-color:springgreen;  */
   flex-wrap: wrap;
@@ -64,7 +66,87 @@ h3{
 }
 .okReq{
     padding-top: 12%;
-    height: 7vh;
-    width: 10vw;
+    height: 6vh;
+    width: 16vw;
     float: right;
+    border: solid;
+text-align: center;
+    background-color: orange;
+    border :'solid 3px black';
+    color:'black';
+}
+body{
+  background-color: lightgrey;
+  direction: rtl;
+}
+#cardcssRequest{
+  background-image:url('../../Images/orangcar.png');
+  margin: 3%;
+  height: 80vh;
+  display: inline-block;
+  width: 50vw;
+  position: absolute;
+  right: 8vw;
+  background-size: 280%;
+background-color: lightgray;
+background-position: left top -5vh -10vw;
+/* box-shadow: 5px 5px 5px  black; */
+border: solid 3px;
+
+}
+#listOfItems{
+  height: 20vh;
+}
+.headercss{ 
+  box-shadow: 5px 5px 5px  black;
+
+  font-size: 3vh;   
+height: 5vh;
+text-align: center;
+background-color: gray;
+}
+.secondLine{    
+  box-shadow: 5px 5px 5px  black;
+font-weight: bolder;
+width: 6vw;
+  background-color: gray;
+  }
+h1{
+  font-size: xx-large;
+  color: black;
+  margin-right: 14%;
+
+}
+#cardcss:hover,#headercss:hover{
+  background-color: #ff9100;
+}
+#ll{
+  top:-2vh;
+background-color: grey;
+color: #ff9100;
+right: 4vw;
+
+  box-shadow: 5px 5px 5px  black;
+}
+#GridCss{
+  top: 1vh;
+  line-height: 7vh;
+  color: rgb(0, 0, 0);
+  position: relative;
+
+}
+#outlined-basic{
+  border: solid;
+  height: 2vh;
+}
+body{
+
+  background-color: lightgray;
+}
+#insign{
+  border: solid;
+  height: 6vh;
+width: 15vw;
+background-color:transparent;
+
 }
