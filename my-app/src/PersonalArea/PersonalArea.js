@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Box from '@mui/material/Box';
-
+import { useNavigate } from 'react-router-dom'
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -13,6 +13,7 @@ import ManagePage from '../ManagePage/ManagePage';
 //מתנדב:עדכון פרטים
 //נעזר:עדכון פרטים,יצירת מודעה
 const PersonalArea =()=>{
+    const navigate = useNavigate();
     const handleChange = (event, newValue) => {
         setValue(newValue);
       };
@@ -20,7 +21,7 @@ const PersonalArea =()=>{
       const user = useSelector((state) => state.user);
       return (
    
-    <Box sx={{ width: '100%', typography: 'body1' }}   >
+    <Box id="b" sx={{ width: '100%', typography: 'body1' }}   >
     
     {user.usertype&&
   <>

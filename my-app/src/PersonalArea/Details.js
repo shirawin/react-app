@@ -10,11 +10,12 @@ import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import AddAlarmIcon from '@mui/icons-material/AddAlarm';
 import { createUser } from '../Api/Users_Api';
+import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material';
 import './Details.css'
 
 const Details =(props)=>{
-
+  const navigate = useNavigate();
 const [moveRight, setMoveRight] = useState(false);
 const [show,setShow]=useState(true);
 const [type,setType]=useState(false);
@@ -84,7 +85,7 @@ return (
               <input id="insign" type="text" placeholder="שם" onBlur={(e)=>{ handleChange(e.target.value,"Fullname")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="password" placeholder="טלפון נייד" onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
+              <input id="insign" type="text" placeholder="טלפון נייד" onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
             </div>
             <div class="input-wrapper-sign">
               <input id="insign" type="email" placeholder="your@email.com" onBlur={(e)=>{ handleChange(e.target.value,"Email")}} />
@@ -172,6 +173,7 @@ return (
         </fieldset>
       </div>
       }
+      <div id="backToManage" onClick={()=>navigate("/ManagePage")}></div>
     </div>
 
     </>
