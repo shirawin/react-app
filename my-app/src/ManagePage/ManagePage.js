@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import {FilterTravels, getActivTravels,GetTravelsByUser} from '../Api/Travels_Api'
+import {FilterTravels, getActivTravels,GetTravelsByUser,FilterTravelsByUser} from '../Api/Travels_Api'
 import { Button, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -22,6 +22,7 @@ import {orangcar} from '../Images/orangcar.png'
 import { HubConnectionBuilder } from "@microsoft/signalr";
 import * as signalR from '@microsoft/signalr';
 const ManagePage = () => {
+  const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -35,12 +36,14 @@ const ManagePage = () => {
   const [city, setCity] = useState("");
   const [connection, setConnection] = useState(null);
   const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
+  const [city,setCity] = useState("");
+  const [cityDest,setCityDest] = useState("");
+  const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה","בני ברק","רחובות","אלעד","חיפה","sss"]
+  const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
   const [resData, setResData] = useState([]);
-  const user = useSelector((state) => state.user);
-
-  const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState([]);
-
+  const userType =1;
+  
+ 
  //מתנדב-true
 
 
@@ -97,6 +100,7 @@ const GetAllTravels=async()=>{
     }));
   }
 const fetchData = async () => {
+  debugger;
   console.log(user);
  let data=[]
   if(user.usertype){
@@ -104,6 +108,7 @@ const fetchData = async () => {
     data= await getActivTravels();
   }
   else{
+    data= await GetTravelsByUser(user.code);
     data= await GetTravelsByUser(user.code);
   }
   setResData(data);
@@ -131,18 +136,34 @@ useEffect(() => {
     setCity(newValue);
     setDisable(false);
   };
+  //כשחל שינוי בעיר יעד
+  const handleChangeCityDest = async (newValue) => {
+    newValue.preventDefault();
+    setCityDest(newValue);
+    setDisable(false);
+  };
   const handleReset=()=>{
     setSerchObj([])
     setCity("")
+    setCityDest("");
     setFirstDate(null)
     setSecondDate(null)
     fetchData()
     setDisable(true)
   }
   //בלחיצה על כפתור הפלטור
+
   const handleSubmit = async () => {
-    var x = await FilterTravels(searchObj)
     debugger
+    var x 
+    if(user.usertype){
+     x= await FilterTravels(searchObj)
+    debugger
+   }
+   else{
+    debugger
+    x= await FilterTravelsByUser(searchObj,user.code)
+   }
     setResData(x)
   };
   //בלחיצה על הכפתור למעבר לעדכון פרטים אישיים
@@ -202,9 +223,9 @@ useEffect(() => {
           direction="row"
           justifyContent="flex-end"
           alignItems="center">
-          <Grid item style={{ width: '14vw'}}>
+          <Grid item style={{ width: '12vw'}}>
             <FormControl id="cityLabel">
-              <InputLabel >מעיר</InputLabel>
+              <InputLabel >עיר מוצא</InputLabel>
               <Select
                 labelId="cityLabel"
                 id="city"
@@ -220,8 +241,27 @@ useEffect(() => {
                 })}
               </Select>
             </FormControl>
+            </Grid>
+            <Grid item style={{ width: '13vw'}}>
+            <FormControl id="cityDestLabel">
+              <InputLabel >עיר יעד</InputLabel>
+              <Select
+                labelId="cityDestLabel"
+                id="cityDest"
+                value={cityDest}
+                label="cityDest"
+                onChange={(e)=>{onChange(e.target.value,"cityDest");setDisable(false);setCityDest(e.target.value)}}>
+                {cities.map((cityDest) => {
+                  return (
+                    <MenuItem key={cityDest} value={cityDest}>
+                      {cityDest}
+                    </MenuItem>
+                  );
+                })}
+              </Select>
+            </FormControl>
           </Grid>
-          <Grid item style={{ width: '14vw' }}>
+          <Grid item style={{ width: '13vw' }}>
             {/* <FormControl style={{ minWidth: 40 }}> */}
               <LocalizationProvider dateAdapter={AdapterDayjs} >
                 <Stack spacing={1}
@@ -231,7 +271,7 @@ useEffect(() => {
                     inputFormat="DD/MM/YYYY"
                     value={firstDate}
                     onChange={handleChangeFirstDate}
-                    renderInput={(params) => <TextField {...params} classname="inputDate" />}
+                    renderInput={(params) => <TextField {...params}  />}
                   />
                 </Stack>
               </LocalizationProvider>
@@ -246,7 +286,7 @@ useEffect(() => {
                   inputFormat="DD/MM/YYYY"
                   value={secondDate}
                   onChange={handleChangeSecondDate}
-                  renderInput={(params) => <TextField {...params} classname="inputDate" />}
+                  renderInput={(params) => <TextField {...params}  />}
                 />
               </Stack>
             </LocalizationProvider>

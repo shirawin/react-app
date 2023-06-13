@@ -10,11 +10,12 @@ import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import AddAlarmIcon from '@mui/icons-material/AddAlarm';
 import { createUser } from '../Api/Users_Api';
+import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material';
 import './Details.css'
 
 const Details =(props)=>{
-
+  const navigate = useNavigate();
 const [moveRight, setMoveRight] = useState(false);
 const [show,setShow]=useState(true);
 const [type,setType]=useState(false);
@@ -175,6 +176,7 @@ return (
         </fieldset>
       </div>
       }
+      <div id="backToManage" onClick={()=>navigate("/ManagePage")}></div>
     </div>
 
     </>

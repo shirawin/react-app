@@ -60,11 +60,20 @@ h2{
   #city{
     background-color: #ff9100;
     border: #a1a1a1;
-    width: 8vw;
+    width: 10vw;
   }
   #cityLabel{
     border: #ff0404;
-    width: 8vw;
+    width: 10vw;
+  }
+  #cityDest{
+    background-color: #ff9100;
+    border: #a1a1a1;
+    width: 10vw;
+  }
+  #cityDestLabel{
+    border: #ff0404;
+    width: 10vw;
   }
   .date{
     margin-left: 1.5vw;

@@ -10,6 +10,7 @@ export const Get_SUM_VOLUNTEERS= `${url}GetSumOfVolunteers`;
 export const Get_SUM_HELPEDS= `${url}GetSumOfHelpeds`;
 export const createTravel= `${url}createTravel`;
 export const filterTravel= `${url}filterTravel`;
+export const filterTravelsByUser= `${url}filterTravelsByUser`;
 export const Get_Active_Travels= `${url}getActiveTravels`;
 export const CreateUser= `${url}createUser`;
 export const TAKE_TRAVEL= `${url}takeTravel`;
