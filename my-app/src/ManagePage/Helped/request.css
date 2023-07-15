@@ -7,7 +7,6 @@
     flex-wrap: wrap;
     padding-bottom: 0.5%;
     float:right;
-    background-color: lightgray;
 } 
 h3{
   color: black;
@@ -76,8 +75,7 @@ text-align: center;
     color:'black';
 }
 body{
-  background-color: lightgrey;
-  direction: rtl;
+
 }
 #cardcssRequest{
   background-image:url('../../Images/orangcar.png');
@@ -139,10 +137,7 @@ right: 4vw;
   border: solid;
   height: 2vh;
 }
-body{
 
-  background-color: lightgray;
-}
 #insign{
   border: solid;
   height: 6vh;

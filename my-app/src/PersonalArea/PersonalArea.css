@@ -5,16 +5,11 @@
 #mui-p-39582-T-1{
     color: red;
 }
-#main{
-    background-color: lightgray;
-}
+
 .tabDetailes{
     direction:rtl;
     margin-right: 29%;
     /* margin-top: 1%; */
     /* background-color: aqua; */
     width:70%
-}
-body{
-    background-color: lightgray;
 }

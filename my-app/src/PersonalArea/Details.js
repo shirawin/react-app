@@ -12,6 +12,8 @@ import AddAlarmIcon from '@mui/icons-material/AddAlarm';
 import { createUser } from '../Api/Users_Api';
 import { IconButton } from '@mui/material';
 import './Details.css'
+import Back from '../back'
+
 
 const Details =(props)=>{
 
@@ -67,7 +69,15 @@ const handleChange = (selected,key) => {
  }));
 
  };
-
+ 
+ const handleNavigate=()=>{
+   if (props.screen){
+     return "/ManagePage"
+   }
+   else{
+    return encodeURIComponent("/");
+   }
+ }
  const handleButtonClick = () => {
     
   debugger;
@@ -79,6 +89,8 @@ const handleChange = (selected,key) => {
 return (
     <>
     <div id="divSignUp">
+
+    <Back  navigateHref={props.screen?"/ManagePage":"/"} ></Back>
     {/* {moving-div ${moveRight ? 'move-right' : ''}} */}
       <div id="login" className={`login-form-container-sign${moveRight ? '-right' : ''}`}>
          <header id="h">{props.header}</header>

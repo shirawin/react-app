@@ -107,8 +107,8 @@ border-radius: 6%;
   position: relative;
   background-size: cover;
   background-attachment: fixed;
-  width: 100vw;
-  height: 100vw;
+  width: 100%;
+  height: 1000vh;
  
 }
 #boxBar{
@@ -118,4 +118,13 @@ border-radius: 6%;
 }
 #travel{
   margin-top: 15vh;
+}
+#cityDest{
+  background-color: #ff9100;
+  border: #a1a1a1;
+  width: 10vw;
+}
+#cityDestLabel{
+  border: #ff0404;
+  width: 10vw;
 }

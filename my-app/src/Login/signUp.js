@@ -18,7 +18,6 @@ const SignUp =()=>{
     const [volunteer, setVolunteer]=useState(false);
 return (
   <div>
-    <div id="backTohome" onClick={()=>navigate("/")}></div>
          <div className="details">
           <Details screen={false} header={'הרשמה למערכת'} type={true}/> 
          </div>

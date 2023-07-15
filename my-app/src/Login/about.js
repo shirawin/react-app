@@ -2,11 +2,17 @@ import React ,{ useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import {useSpring,animated} from 'react-spring'
+import {  useEffect } from 'react';
+import {  GetSumOfTravels } from '../Api/Travels_Api';
+import {  GetSumOfHelpeds } from '../Api/Users_Api';
+import {  GetSumOfVolunteers } from '../Api/Volunteers_Api';
+
 import './about.css'
 
 const About =()=>{
-    const x =300;
-
+    const [volunteers, setVolunteers] = useState();
+    const [helpeds, setHelpeds] = useState();
+    const [travels, setTravels] = useState();
     const navigate = useNavigate();
     const login = async (e) => {
         e.preventDefault();
@@ -17,7 +23,23 @@ const About =()=>{
         e.preventDefault();
         navigate("/signUp")
       }
+      const fetchData = async () => {
+        const resHelpeds = await GetSumOfHelpeds();
+        setHelpeds(resHelpeds);
+    
+         const data = await GetSumOfTravels();
+        setTravels(data);
+       
+        const resVolunteers = await GetSumOfVolunteers();
+        setVolunteers(resVolunteers);
 
+    
+        
+    };
+    
+    useEffect(() => {
+        fetchData()
+    }, []);
       function Number({n}){
         const {number} =useSpring({
            from:{number:0},
@@ -73,19 +95,19 @@ return (
         <a id='a-span-c'>מתנדבים</a>
     </div>
     <span id='span-c'>
-        <Number n={x}/> 
+        <Number n={volunteers}/> 
     </span>
     <div className='car'>
         <a id='a-span-c2'>נסיעות</a>    
     </div>
     <span id='span-c2'>
-        <Number n={x}/>
+        <Number n={travels}/>
     </span>
     <div className='weelchair'>
         <a id='a-span-c3'>נעזרים </a>    
     </div>
     <span id='span-c3'>
-        <Number n={x}/>
+        <Number n={helpeds}/>
     </span>
        
     </div>

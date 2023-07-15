@@ -12,12 +12,8 @@ import Datetime from 'react-datetime';
 import "react-datetime/css/react-datetime.css";
 import './request.css'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import dayjs from 'dayjs';
+import Back from '../../back'
+
 const Request=()=>{
  const[openList,setOpenList]= useState(false);
  const[cnt,setCnt]= useState(0);
@@ -78,9 +74,8 @@ const isDisabled = (checkboxId) => {
     return(
        
                   <Card  id="cardcssRequest" >
-
             <h1>בקשה חדשה</h1>
-            <div className='div-title-req'>מתי?</div>
+           
             <div className='divDest'>
             <TextField id="outlined-basic" label="יעד" variant="outlined"  onBlur={(e)=>{handleChange(e.target.value,"Dest")}}/>
             </div>
@@ -126,7 +121,8 @@ const isDisabled = (checkboxId) => {
                         onSubmit()} }>שלח בקשה</Button>
                  </div>
                 </div>
-              
+                <Back  navigateHref={'/ManagePage'} ></Back>
+
           </Card>
       
     );
