@@ -14,7 +14,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {TakeTravel} from '../../Api/Travels_Api'
+import {TakeTravel} from '../../Api/Travels_Api';
+import {CloseTravel} from '../../Api/Travels_Api';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -52,6 +54,11 @@ const Travel =(Props)=>{
   const clickTakeTravel = () => {
     debugger
    var res=TakeTravel(Props.idTravel,user.code)
+  };
+
+  const clickCloseTravel = () => {
+    debugger
+    var res=CloseTravel(Props.idTravel)
   };
   // const =()=>{
 
@@ -108,7 +115,7 @@ return (
       {user.usertype&&
       <Button variant="contained" id="ll" onClick={clickTakeTravel}  ><b>אני רוצה לעשות טוב😁</b></Button>}
         {!user.usertype&&
-        <Button variant="contained" id="ll" onClick={clickTakeTravel} ><b>סגור מודעה&nbsp;&nbsp;❌</b></Button>  }
+        <Button variant="contained" id="ll" onClick={clickCloseTravel} ><b>סגור מודעה&nbsp;&nbsp;❌</b></Button>  }
         </CardActions>
     
     </Card>  

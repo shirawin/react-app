@@ -37,7 +37,7 @@ const PersonalArea =()=>{
           <Tab label="טבלת משתמשים" value="2" />
         </TabList>
       </Box>
-       <TabPanel value="1" > <Details screen={true} header={'עדכון פרטים'} type={user.usertype}/> </TabPanel>
+       <TabPanel value="1" > <Details screen={1} header={'עדכון פרטים'} type={user.usertype}/> </TabPanel>
        <TabPanel value="2" > <TableUsers/> </TabPanel>
     </TabContext>
    
