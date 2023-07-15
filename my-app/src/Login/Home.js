@@ -23,23 +23,7 @@ const [travels, setTravels] = useState([]);
 
 const x =300
 
-const fetchData = async () => {
-    const resHelpeds = await GetSumOfHelpeds();
-    setHelpeds(resHelpeds);
 
-     const data = await GetAllUsers();
-    setUsers(data);
-   
-    setVolunteers(300);
-    //const resVolunteers = await GetSumOfVolunteers();
-    const resTravels = await GetSumOfTravels();setTravels(resTravels);
-
-    
-};
-
-useEffect(() => {
-    fetchData()
-}, []);
 
 const hideSignIn =()=>{
     setSignIn(true);

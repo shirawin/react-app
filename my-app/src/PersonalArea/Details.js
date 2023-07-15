@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material';
 import { useSelector } from 'react-redux'; 
 import './Details.css'
+import Back from '../back'
+
 
 const Details =(props)=>{
   const navigate = useNavigate();
@@ -69,7 +71,15 @@ const handleChange = (selected,key) => {
  }));
 
  };
-
+ 
+ const handleNavigate=()=>{
+   if (props.screen){
+     return "/ManagePage"
+   }
+   else{
+    return encodeURIComponent("/");
+   }
+ }
  const handleButtonClick = () => {
     
   debugger;
@@ -81,6 +91,8 @@ const handleChange = (selected,key) => {
 return (
     <>
     <div id="divSignUp">
+
+    <Back  navigateHref={props.screen?"/ManagePage":"/"} ></Back>
     {/* {moving-div ${moveRight ? 'move-right' : ''}} */}
       <div id="login" className={`login-form-container-sign${moveRight ? '-right' : ''}`}>
          <header id="h">{props.header}</header>

@@ -19,8 +19,8 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import TextField from '@mui/material/TextField';
 import { useSelector } from 'react-redux'; 
 import {orangcar} from '../Images/orangcar.png'
-import { HubConnectionBuilder } from "@microsoft/signalr";
-import * as signalR from '@microsoft/signalr';
+import Back from '../back'
+
 const ManagePage = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -35,26 +35,22 @@ const ManagePage = () => {
   const [searchObj, setSerchObj] = useState([]);
   const [city, setCity] = useState("");
   const [connection, setConnection] = useState(null);
-  const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה"]
-  const [city,setCity] = useState("");
   const [cityDest,setCityDest] = useState("");
   const cities = ["אשדוד", "ירשלים", "תל אביב", "פתח תקווה","בני ברק","רחובות","אלעד","חיפה","sss"]
   const options = ["עדכון פרטים", "המודעות שלי", "צור מודעה"]
   const [resData, setResData] = useState([]);
-  const userType =1;
   
  
- //מתנדב-true
 
 
- useEffect(() => {
-  const newConnection = new signalR.HubConnectionBuilder()
-    .withUrl("https://localhost:44330" + "/hubs/chat")
-    .withAutomaticReconnect()
-    .build();
+//  useEffect(() => {
+//   const newConnection = new signalR.HubConnectionBuilder()
+//     .withUrl("https://localhost:44330" + "/hubs/chat")
+//     .withAutomaticReconnect()
+//     .build();
 
-  setConnection(newConnection);
-}, []);
+//   setConnection(newConnection);
+// }, []);
 
 // const createConnection = () => {
 //   debugger
@@ -194,7 +190,10 @@ useEffect(() => {
 
   return (
     <div id="main">
+         
+
       <Box id="boxBar" >
+
         <AppBar position="static" id="bar">
           <Toolbar>
           {/* <button onClick={sendMessage}>Send</button> */}
@@ -216,7 +215,7 @@ useEffect(() => {
             )}
           </Toolbar>
         </AppBar>
-      </Box> 
+      </Box>  <Back  navigateHref={'/'} ></Back>
       <FormControl id="form" className='header'> <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Grid item xs
           container

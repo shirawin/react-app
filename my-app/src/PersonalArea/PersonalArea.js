@@ -21,7 +21,7 @@ const PersonalArea =()=>{
       const user = useSelector((state) => state.user);
       return (
    
-    <Box sx={{ width: '100%', typography: 'body1',backgroundColor:'lightgray' }}   >
+    <Box sx={{ width: '100%',height:'100vh', typography: 'body1',backgroundColor:'lightgray' }}   >
     
     {user.usertype&&
   <> 

@@ -12,6 +12,8 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { GetAllUsers, changeActivity } from '../Api/Users_Api';
+import Back from '../back'
+
 
 const TableUsers = () => {
   const [rows, setRows] = useState([]);
@@ -90,8 +92,11 @@ const TableUsers = () => {
   };
 
   return (
-    <div style={{ height:'100vh',color: 'gray',fontSize:'2.5em' }}> <h2>טבלת משתמשים</h2>
-      <Box sx={{ marginTop: '6px' }}>
+    <div style={{ height:'100vh',color: 'gray',fontSize:'2.5em' }}>     
+     <Back  navigateHref={'/ManagePage'} ></Back>
+    <h2 style={{marginTop:'-40px', marginBottom:'40px'}}>טבלת משתמשים</h2>
+     
+      <Box sx={{ marginTop: '-20px' }}>
        
         <Paper sx={{ width: '100%', overflow: 'hidden', backgroundColor: 'lightgray', boxShadow: '0px 0px 10px black' }}>
           <TableContainer sx={{ maxHeight: 440 }}>
@@ -182,6 +187,8 @@ const TableUsers = () => {
           </Modal>
         </Paper>
       </Box>
+
+
     </div>
   );
 };

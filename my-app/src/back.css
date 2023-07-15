@@ -1,0 +1,21 @@
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    /* margin-bottom: 15%; */
+    margin-right:2%;
+    position: fixed;
+    top:77vh;
+    right: 00;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+  }
+  .circle:hover{
+    cursor: pointer;
+  }

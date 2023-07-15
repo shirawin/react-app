@@ -12,6 +12,7 @@ import { setUser } from '../redux/Slices/UserSlice';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
+import Back from '../back'
 // import Swal from 'sweetalert2'
 const SignIn =()=>{
   
@@ -76,25 +77,10 @@ const handleSubmit = async (e) => {
   }, [showAlert, navigateTo]);
 
 return (
-  //  <div className='login'>
-  //   <Box component="form" onSubmit={handleSubmit} dir='rtl' >
-  //       <h1 className='title'>התחברות</h1>
-  //       <h2 className="signup">פעם ראשונה באתר? <span className='link' onClick={navigateToSignup}>הרשמה</span></h2>
-  //         <div className='name'>
-  //         <TextField id="outlined-basic" label="אימייל" variant="outlined"  onChange={(e) => setLogIn({ ...logIn, userName: e.target.value})}/>
-  //         </div>
-  //         <div className='pass'>
-  //         <TextField id="outlined-basic" label="סיסמה" variant="outlined" type='password' onChange={(e) => setLogIn({ ...logIn, password: e.target.value})}/>
-  //         </div>
-  //       <div className="ok-div-Wrap">
-  //            <span></span>
-  //            <Button style={{backgroundColor: '#ff9100'}} className='ok' variant="contained" type='submit'>אישור</Button>
-  //       </div>
-  //   </Box>
-  //  </div>
+
 <Box component="form" onSubmit={handleSubmit} dir='rtl' >
-<div id="backTohome" onClick={()=>navigate("/")}></div>
 <div id="divLogin">
+    <Back  navigateHref={'/'} ></Back>
     <div id="login" class="login-form-container">
     <header id="h">התחברות למערכת</header>
     <fieldset id="feild">

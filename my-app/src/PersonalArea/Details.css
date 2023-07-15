@@ -2,7 +2,9 @@ body::-webkit-scrollbar {
   display: none;
 }
 #divSignUp {
-    color: #fff;
+    /* color: #fff; */
+    background-color: lightgray;
+
     font-family: arial, helvetica, sans-serif;
     line-height: 1.4;
     font-size: 0.6em;
@@ -79,7 +81,8 @@ body::-webkit-scrollbar {
     .signup{
       margin-right: 25%;
       /* background-color: red; */
-      font-size:2em
+      font-size:2em;
+      color:#fff;
     }
     .signup:hover{
       cursor: pointer;
