@@ -43,9 +43,13 @@ export const getActivTravels = async () => {
     return await (await axios.get(`https://localhost:44330/api/GetTravelsByUser/${userID}`)).data;
 
 }
+
 export const TakeTravel= async(travelID,vounteerID)=>{
   debugger
-return await (await axios.get(`https://localhost:44330/api/takeTravel/${travelID}/${vounteerID}`)).data;
+return await (await axios.get(`https://localhost:44330/api/takeTravel/${travelID}/${vounteerID}`)).data; 
+}  
 
-    
+export const CloseTravel= async(travelID)=>{
+  debugger
+return await (await axios.put(`https://localhost:44330/api/closeTravel/${travelID}`)).data; 
 }  
