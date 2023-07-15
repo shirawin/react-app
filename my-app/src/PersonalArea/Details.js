@@ -10,23 +10,25 @@ import Checkbox from '@mui/material/Checkbox';
 import Switch from '@mui/material/Switch';
 import AddAlarmIcon from '@mui/icons-material/AddAlarm';
 import { createUser } from '../Api/Users_Api';
+import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@mui/material';
+import { useSelector } from 'react-redux'; 
 import './Details.css'
 import Back from '../back'
 
 
 const Details =(props)=>{
-
-const [moveRight, setMoveRight] = useState(false);
-const [show,setShow]=useState(true);
-const [type,setType]=useState(false);
-const [alarm,setAlarm] = useState(false);
-const [minAlarm,setMinAlarm] = useState("08:00");
-const [maxAlarm,setMaxAlarm] = useState("20:00");
-const [listAlarms,setListAlarms] = useState([]);
-const [submit,setSubmit] = useState(false);
-const[objReq,setObjReq]= useState({"Usertype":false});
-
+  const navigate = useNavigate();
+  const [moveRight, setMoveRight] = useState(false);
+  const [show,setShow]=useState(true);
+  const [type,setType]=useState(false);
+  const [alarm,setAlarm] = useState(false);
+  const [minAlarm,setMinAlarm] = useState("08:00");
+  const [maxAlarm,setMaxAlarm] = useState("20:00");
+  const [listAlarms,setListAlarms] = useState([]);
+  const [submit,setSubmit] = useState(false);
+  const[objReq,setObjReq]= useState({"Usertype":false});
+  const user = useSelector((state) => state.user);
  var newArr=[]
  useEffect(()=>{
    console.log(props.screen)
@@ -96,25 +98,25 @@ return (
          <header id="h">{props.header}</header>
          <fieldset id="feild">
             <div class="input-wrapper-sign">
-              <input id="insign" type="text" placeholder="שם" onBlur={(e)=>{ handleChange(e.target.value,"Fullname")}} />
+              <input id="insign" type="text" placeholder={props.screen ? user.fullname: "שם"} onBlur={(e)=>{ handleChange(e.target.value,"Fullname")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="text" placeholder="טלפון נייד" onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
+              <input id="insign" type="text" placeholder={props.screen ? user.phone: "טלפון נייד"} onBlur={(e)=>{ handleChange(e.target.value,"Phone")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="email" placeholder="your@email.com" onBlur={(e)=>{ handleChange(e.target.value,"Email")}} />
+              <input id="insign" type="email" placeholder={props.screen ? user.email: "your@email.com"} onBlur={(e)=>{ handleChange(e.target.value,"Email")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="password" placeholder="סיסמה" onBlur={(e)=>{ handleChange(e.target.value,"Password")}}/>
+              <input id="insign" type="password" placeholder={props.screen ? user.password: "סיסמה"} onBlur={(e)=>{ handleChange(e.target.value,"Password")}}/>
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="text" placeholder="עיר" onBlur={(e)=>{ handleChange(e.target.value,"City")}} />
+              <input id="insign" type="text" placeholder={props.screen ? user.city: "עיר"} onBlur={(e)=>{ handleChange(e.target.value,"City")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="text" placeholder="רחוב" onBlur={(e)=>{ handleChange(e.target.value,"Street")}} />
+              <input id="insign" type="text" placeholder={props.screen ? user.Street: "רחוב"} onBlur={(e)=>{ handleChange(e.target.value,"Street")}} />
             </div>
             <div class="input-wrapper-sign">
-              <input id="insign" type="number" placeholder="בית" onBlur={(e)=>{ handleChange(e.target.value,"Housenumber")}}/>
+              <input id="insign" type="number" placeholder={props.screen ? user.housenumber: "בית"} onBlur={(e)=>{ handleChange(e.target.value,"Housenumber")}}/>
             </div>
             {(show&&!props.screen)&&
              <>
@@ -187,6 +189,7 @@ return (
         </fieldset>
       </div>
       }
+      <div id="backToManage" onClick={()=>navigate("/ManagePage")}></div>
     </div>
 
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Box from '@mui/material/Box';
-
+import { useNavigate } from 'react-router-dom'
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
@@ -13,6 +13,7 @@ import TableUsers from '../PersonalArea/TableUsers';
 //מתנדב:עדכון פרטים
 //נעזר:עדכון פרטים,יצירת מודעה
 const PersonalArea =()=>{
+    const navigate = useNavigate();
     const handleChange = (event, newValue) => {
         setValue(newValue);
       };
@@ -36,7 +37,7 @@ const PersonalArea =()=>{
           <Tab label="טבלת משתמשים" value="2" />
         </TabList>
       </Box>
-       <TabPanel value="1" > <Details screen={true} header={'עדכון פרטים'} type={user.usertype}/> </TabPanel>
+       <TabPanel value="1" > <Details screen={1} header={'עדכון פרטים'} type={user.usertype}/> </TabPanel>
        <TabPanel value="2" > <TableUsers/> </TabPanel>
     </TabContext>
    

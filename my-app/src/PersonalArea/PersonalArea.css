@@ -11,5 +11,25 @@
     margin-right: 29%;
     /* margin-top: 1%; */
     /* background-color: aqua; */
-    width:70%
+    width:70%;
+}
+#b{
+    position:fixed;
+    background-image: url('../Images/back.png');
+    background-repeat: no-repeat;
+}
+
+#backToManage{
+    background-image: url('../Images/home.JPG');
+    background-repeat: no-repeat;
+    height: 14vh;
+    width: 6vw;
+    margin: 1vh;
+    cursor: pointer;
+    position: fixed ;
+    right:2vw;
+}
+
+body{
+    background-color: lightgray;
 }
